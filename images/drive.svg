@@ -1,0 +1,180 @@
+<svg viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Mashina ichida haydovchi, oltin soat yorug'ligi">
+  <defs>
+    <linearGradient id="windSky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#e07f3e"/>
+      <stop offset="0.45" stop-color="#f4a85f"/>
+      <stop offset="0.72" stop-color="#ffcf8c"/>
+      <stop offset="1" stop-color="#ffe3ad"/>
+    </linearGradient>
+    <radialGradient id="sun" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#fff2d2"/>
+      <stop offset="0.5" stop-color="#ffe1a4" stop-opacity="0.85"/>
+      <stop offset="1" stop-color="#ffe1a4" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="consoleGlow" cx="0.5" cy="0.4" r="0.6">
+      <stop offset="0" stop-color="#f0a35a" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#f0a35a" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="dash" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#3a2e3e"/>
+      <stop offset="1" stop-color="#1c1726"/>
+    </linearGradient>
+    <linearGradient id="mapBg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2b7d86"/>
+      <stop offset="1" stop-color="#1d5e66"/>
+    </linearGradient>
+    <clipPath id="wsClip"><rect x="250" y="150" width="520" height="368" rx="26"/></clipPath>
+  </defs>
+
+  <!-- INTERIOR DARK BASE -->
+  <rect x="0" y="0" width="1000" height="1000" fill="#181321"/>
+
+  <!-- ============ WINDSHIELD SCENE ============ -->
+  <g clip-path="url(#wsClip)">
+    <rect x="250" y="150" width="520" height="368" fill="url(#windSky)"/>
+    <circle cx="560" cy="320" r="150" fill="url(#sun)"/>
+    <circle cx="560" cy="320" r="46" fill="#fff2cf"/>
+    <!-- horizon light band -->
+    <rect x="250" y="392" width="520" height="14" fill="#fff0c8" opacity="0.6"/>
+    <!-- distant Uzbek skyline silhouette -->
+    <g fill="#b15f2e">
+      <rect x="300" y="356" width="34" height="44"/>
+      <rect x="346" y="338" width="26" height="62"/>
+      <rect x="402" y="362" width="20" height="38"/>
+      <!-- dome -->
+      <path d="M430,400 C430,372 442,358 456,352 C470,358 482,372 482,400 Z"/>
+      <rect x="452" y="342" width="8" height="12"/>
+      <!-- tall tower -->
+      <rect x="498" y="330" width="30" height="70"/>
+      <!-- minaret -->
+      <rect x="556" y="346" width="14" height="54"/>
+      <path d="M555,346 a8 7 0 0 1 16 0 Z"/>
+      <rect x="600" y="358" width="30" height="42"/>
+      <rect x="648" y="344" width="22" height="56"/>
+      <rect x="700" y="362" width="28" height="38"/>
+    </g>
+    <!-- road receding -->
+    <path d="M470,518 L560,406 L600,406 L720,518 Z" fill="#c2723a" opacity="0.9"/>
+    <path d="M556,470 L560,420 L566,420 L574,470 Z" fill="#ffe3ad" opacity="0.7"/>
+  </g>
+
+  <!-- windshield inner warm rim -->
+  <rect x="250" y="150" width="520" height="368" rx="26" fill="none" stroke="#b9763f" stroke-width="4" opacity="0.6"/>
+
+  <!-- ============ ROOF / MIRROR / VISORS ============ -->
+  <path d="M0,0 L1000,0 L1000,168 C760,196 240,196 0,168 Z" fill="#231c30"/>
+  <path d="M0,158 C240,186 760,186 1000,158" fill="none" stroke="#6a4f3c" stroke-width="3" opacity="0.7"/>
+  <rect x="296" y="150" width="120" height="22" rx="8" fill="#1c1628"/>
+  <rect x="620" y="152" width="120" height="22" rx="8" fill="#1c1628"/>
+  <!-- rearview mirror -->
+  <rect x="494" y="150" width="14" height="18" fill="#241d30"/>
+  <rect x="452" y="158" width="96" height="26" rx="13" fill="#1b1526"/>
+  <rect x="458" y="163" width="84" height="14" rx="7" fill="#5b4636" opacity="0.7"/>
+
+  <!-- ============ DASHBOARD ============ -->
+  <path d="M120,500 C360,556 660,556 900,500 L960,640 C620,720 380,720 40,640 Z" fill="url(#dash)"/>
+  <path d="M120,500 C360,556 660,556 900,500" fill="none" stroke="#7a5a40" stroke-width="3" opacity="0.7"/>
+
+  <!-- TAXI card on dash -->
+  <g transform="translate(694,486) rotate(7)">
+    <rect x="0" y="0" width="78" height="46" rx="6" fill="#f1e3c2"/>
+    <rect x="0" y="0" width="78" height="46" rx="6" fill="#000" opacity="0.05"/>
+    <text x="39" y="31" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="800" fill="#1a1a22" text-anchor="middle" letter-spacing="1">TAXI</text>
+  </g>
+
+  <!-- ============ PASSENGER SEAT (right) ============ -->
+  <path d="M820,560 C940,580 1000,640 1000,760 L1000,1000 L720,1000 L760,640 Z" fill="#241d36"/>
+  <path d="M770,630 C880,650 940,700 950,800" fill="none" stroke="#9c6a44" stroke-width="3" opacity="0.5"/>
+
+  <!-- ============ CENTER CONSOLE ============ -->
+  <ellipse cx="540" cy="780" rx="260" ry="180" fill="url(#consoleGlow)"/>
+  <path d="M452,604 L636,604 L688,1000 L398,1000 Z" fill="#221b30"/>
+  <path d="M452,604 L636,604 L646,672 L444,672 Z" fill="#2c2440"/>
+  <!-- warm ambient strips -->
+  <path d="M456,610 L470,1000" stroke="#ef9a52" stroke-width="4" opacity="0.45"/>
+  <path d="M632,610 L616,1000" stroke="#ef9a52" stroke-width="4" opacity="0.45"/>
+  <!-- gear shift -->
+  <rect x="534" y="700" width="14" height="56" rx="7" fill="#15121d"/>
+  <ellipse cx="541" cy="700" rx="26" ry="22" fill="#1a1526"/>
+  <ellipse cx="535" cy="694" rx="12" ry="9" fill="#5d4634" opacity="0.8"/>
+  <!-- cup holders + cup -->
+  <ellipse cx="496" cy="840" rx="34" ry="22" fill="#14101c"/>
+  <ellipse cx="596" cy="852" rx="34" ry="22" fill="#14101c"/>
+  <path d="M474,838 L518,838 L512,790 L480,790 Z" fill="#2c2440"/>
+  <ellipse cx="496" cy="790" rx="19" ry="7" fill="#3c3050"/>
+  <rect x="480" y="784" width="32" height="6" rx="3" fill="#ef9a52" opacity="0.5"/>
+
+  <!-- ============ PHONE + MOUNT ============ -->
+  <rect x="552" y="586" width="10" height="40" fill="#1a1526"/>
+  <g transform="translate(528,486) rotate(-7)">
+    <rect x="0" y="0" width="74" height="132" rx="12" fill="#100e18"/>
+    <rect x="6" y="7" width="62" height="118" rx="7" fill="url(#mapBg)"/>
+    <!-- map roads -->
+    <g stroke="#bfe0e2" stroke-width="3" opacity="0.45" fill="none">
+      <path d="M6,40 H68"/><path d="M6,86 H68"/><path d="M30,7 V125"/><path d="M50,7 V125"/>
+    </g>
+    <!-- route -->
+    <path d="M22,118 L22,80 L48,80 L48,34" stroke="#ff8a3d" stroke-width="7" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="22" cy="118" r="7" fill="#3da5e0" stroke="#fff" stroke-width="2.5"/>
+    <path d="M48,28 l7,12 l-14,0 Z" fill="#ff8a3d"/>
+  </g>
+  <!-- charging cable -->
+  <path d="M560,618 C556,660 580,690 600,706" stroke="#6a5440" stroke-width="3" fill="none" opacity="0.7"/>
+
+  <!-- ============ STEERING WHEEL ============ -->
+  <g>
+    <ellipse cx="452" cy="704" rx="142" ry="66" fill="none" stroke="#161220" stroke-width="28"/>
+    <path d="M322,684 A142 66 0 0 1 470,640" fill="none" stroke="#e09455" stroke-width="7" opacity="0.65" stroke-linecap="round"/>
+    <ellipse cx="452" cy="704" rx="38" ry="27" fill="#14101c"/>
+    <ellipse cx="446" cy="698" rx="11" ry="8" fill="#5d4634" opacity="0.7"/>
+    <path d="M452,704 L318,712 M452,704 L584,714 M452,704 L460,768" stroke="#14101c" stroke-width="15"/>
+  </g>
+
+  <!-- ============ DRIVER (left, over-shoulder) ============ -->
+  <g>
+    <!-- jacket back / shoulders -->
+    <path d="M104,1000
+             C104,742 146,560 248,514
+             C290,494 330,496 362,512
+             C402,490 444,498 466,544
+             C486,588 486,664 482,742
+             C476,862 482,942 482,1000 Z" fill="#16121f"/>
+    <!-- shoulder + back rim light -->
+    <path d="M250,514 C292,494 332,496 362,512" fill="none" stroke="#e0915a" stroke-width="5" opacity="0.55"/>
+    <path d="M362,512 C402,490 444,498 466,544" fill="none" stroke="#e0915a" stroke-width="5" opacity="0.55"/>
+    <path d="M104,1000 C104,800 150,612 240,532" fill="none" stroke="#3a2e44" stroke-width="4" opacity="0.6"/>
+
+    <!-- seatbelt -->
+    <path d="M438,528 L232,760 L256,782 L462,548 Z" fill="#4a4458"/>
+    <path d="M440,532 L236,760" stroke="#e0915a" stroke-width="3" opacity="0.5"/>
+
+    <!-- arm reaching to wheel -->
+    <path d="M430,522 C478,544 510,590 506,640 C502,678 472,696 440,690
+             C462,668 470,628 454,592 C444,566 430,544 416,528 Z" fill="#17131f"/>
+    <path d="M430,522 C478,544 510,590 506,640" fill="none" stroke="#cf8550" stroke-width="4" opacity="0.4"/>
+    <!-- hand on rim -->
+    <path d="M418,648 C436,640 458,644 466,662 C458,676 430,678 414,668 Z" fill="#c4895c"/>
+
+    <!-- neck -->
+    <path d="M316,470 L368,470 L364,548 L322,548 Z" fill="#8f5a3a"/>
+
+    <!-- head: hair mass (3/4 back, facing right) -->
+    <ellipse cx="340" cy="420" rx="54" ry="66" fill="#251a2a"/>
+    <!-- face sliver (right cheek/jaw catching light) -->
+    <path d="M380,388 C394,398 398,432 392,464 C387,482 376,490 366,488
+             C376,466 380,432 372,400 C369,388 374,382 380,388 Z" fill="#c98a5e"/>
+    <!-- nose silhouette against window -->
+    <path d="M392,424 L404,436 L391,446 Z" fill="#c98a5e"/>
+    <path d="M388,408 C394,428 392,452 380,470" fill="none" stroke="#a0683f" stroke-width="3" opacity="0.55"/>
+    <!-- ear + glasses temple -->
+    <ellipse cx="360" cy="442" rx="9" ry="12" fill="#b07a4e"/>
+    <path d="M372,420 L352,438" stroke="#16121e" stroke-width="4.5" stroke-linecap="round"/>
+    <circle cx="384" cy="420" r="9" fill="none" stroke="#16121e" stroke-width="3.5"/>
+    <!-- hair rim light (sun) -->
+    <path d="M300,396 C306,352 326,326 356,322 C378,320 396,332 404,356" fill="none" stroke="#bd7c4c" stroke-width="4.5" opacity="0.55"/>
+    <path d="M300,420 C300,392 308,366 322,348" fill="none" stroke="#3a2a3a" stroke-width="3" opacity="0.7"/>
+  </g>
+
+  <!-- foreground bottom shade -->
+  <path d="M0,1000 L0,930 C300,990 700,990 1000,930 L1000,1000 Z" fill="#0e0b16" opacity="0.9"/>
+</svg>

@@ -1,0 +1,162 @@
+<svg viewBox="0 0 1200 900" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="O'zbekiston shahar manzarasi, sayohat mavzusi">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2f6ea6"/>
+      <stop offset="0.45" stop-color="#6aa6cf"/>
+      <stop offset="0.74" stop-color="#cfe6ea"/>
+      <stop offset="1" stop-color="#f7dca0"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="1" r="0.7">
+      <stop offset="0" stop-color="#ffeec0" stop-opacity="0.9"/>
+      <stop offset="1" stop-color="#ffeec0" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="water" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f4d089"/>
+      <stop offset="1" stop-color="#e7b25c"/>
+    </linearGradient>
+    <linearGradient id="dome" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#37b3bd"/>
+      <stop offset="1" stop-color="#1b8d99"/>
+    </linearGradient>
+    <linearGradient id="glassA" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#a9c9e6"/>
+      <stop offset="1" stop-color="#6f9cc8"/>
+    </linearGradient>
+    <linearGradient id="glassB" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#cfe0ef"/>
+      <stop offset="1" stop-color="#9bbbda"/>
+    </linearGradient>
+  </defs>
+
+  <!-- SKY -->
+  <rect x="0" y="0" width="1200" height="560" fill="url(#sky)"/>
+  <ellipse cx="600" cy="540" rx="520" ry="150" fill="url(#glow)"/>
+
+  <!-- birds -->
+  <g stroke="#22425f" stroke-width="3" fill="none" stroke-linecap="round" opacity="0.55">
+    <path d="M210,150 Q224,140 238,150 Q252,140 266,150"/>
+    <path d="M300,120 Q311,112 322,120 Q333,112 344,120"/>
+  </g>
+
+  <!-- AIRPLANE -->
+  <g transform="translate(815,165) rotate(-20)">
+    <path d="M-5,-8 L-50,-46 L-31,-48 L8,-9 Z" fill="#f5efe0"/>
+    <path d="M-5,8 L-50,46 L-31,48 L8,9 Z" fill="#e8e0cd"/>
+    <path d="M-46,-7 L-68,-27 L-57,-28 L-40,-7 Z" fill="#f5efe0"/>
+    <path d="M-46,7 L-68,27 L-57,28 L-40,7 Z" fill="#e8e0cd"/>
+    <ellipse cx="0" cy="0" rx="64" ry="12" fill="#f5efe0"/>
+    <path d="M62,-7 L62,7 L84,0 Z" fill="#f5efe0"/>
+    <path d="M-64,0 L-44,0 L-50,-3 Z" fill="#ddd2bb"/>
+    <rect x="40" y="-3" width="26" height="6" rx="3" fill="#e8762f"/>
+    <path d="M-50,-46 L-44,-46 L-40,-9 L-46,-9 Z" fill="#e0492f"/>
+  </g>
+
+  <!-- MOUNTAINS -->
+  <path d="M0,470 L140,408 L250,452 L360,400 L470,448 L560,410 L700,456 L820,412 L940,452 L1060,414 L1200,456 L1200,520 L0,520 Z" fill="#3a5478"/>
+  <path d="M0,492 L120,452 L260,486 L380,448 L520,488 L640,452 L780,490 L900,456 L1040,490 L1160,460 L1200,486 L1200,560 L0,560 Z" fill="#243a5c"/>
+
+  <!-- WATER -->
+  <rect x="0" y="500" width="1200" height="120" fill="url(#water)"/>
+  <g stroke="#f7dca0" stroke-width="3" opacity="0.6" stroke-linecap="round">
+    <path d="M80,556 L240,556"/><path d="M820,548 L980,548"/><path d="M500,566 L640,566"/>
+  </g>
+  <path d="M0,500 L1200,500 L1200,512 L0,512 Z" fill="#fff" opacity="0.15"/>
+
+  <!-- ============ CITY SKYLINE ============ -->
+  <g>
+    <!-- back row towers -->
+    <rect x="262" y="466" width="66" height="180" fill="#efe7d1"/>
+    <rect x="262" y="466" width="66" height="180" fill="#000" opacity="0.04"/>
+    <g fill="#41648a" opacity="0.55">
+      <rect x="272" y="480" width="12" height="14"/><rect x="292" y="480" width="12" height="14"/><rect x="312" y="480" width="8" height="14"/>
+      <rect x="272" y="506" width="12" height="14"/><rect x="292" y="506" width="12" height="14"/><rect x="312" y="506" width="8" height="14"/>
+      <rect x="272" y="532" width="12" height="14"/><rect x="292" y="532" width="12" height="14"/><rect x="312" y="532" width="8" height="14"/>
+      <rect x="272" y="558" width="12" height="14"/><rect x="292" y="558" width="12" height="14"/><rect x="312" y="558" width="8" height="14"/>
+    </g>
+
+    <rect x="338" y="398" width="58" height="248" fill="url(#glassA)"/>
+    <g stroke="#5e86b0" stroke-width="2" opacity="0.6">
+      <path d="M338,430 H396"/><path d="M338,470 H396"/><path d="M338,510 H396"/><path d="M338,550 H396"/><path d="M338,590 H396"/>
+      <path d="M357,398 V646"/><path d="M376,398 V646"/>
+    </g>
+    <rect x="338" y="398" width="14" height="248" fill="#fff" opacity="0.18"/>
+
+    <!-- central landmark tower -->
+    <path d="M470,320 L532,320 L536,646 L466,646 Z" fill="url(#glassB)"/>
+    <g stroke="#7ea1c4" stroke-width="2" opacity="0.6">
+      <path d="M468,360 H534"/><path d="M467,400 H535"/><path d="M467,440 H536"/><path d="M466,480 H536"/><path d="M466,520 H537"/><path d="M465,560 H537"/><path d="M465,600 H538"/>
+      <path d="M489,322 V646"/><path d="M512,320 V646"/>
+    </g>
+    <rect x="470" y="320" width="16" height="326" fill="#fff" opacity="0.20"/>
+    <rect x="496" y="300" width="10" height="22" fill="#cfd8e0"/>
+    <circle cx="501" cy="296" r="5" fill="#e6b347"/>
+
+    <!-- cylinder tower -->
+    <rect x="406" y="500" width="46" height="146" fill="#efe7d1"/>
+    <path d="M406,500 a23 10 0 0 1 46 0 Z" fill="#f4efe2"/>
+    <rect x="406" y="500" width="12" height="146" fill="#fff" opacity="0.16"/>
+
+    <!-- blue glass tower -->
+    <rect x="546" y="356" width="70" height="290" fill="url(#glassA)"/>
+    <g stroke="#5e86b0" stroke-width="2" opacity="0.6">
+      <path d="M546,390 H616"/><path d="M546,426 H616"/><path d="M546,462 H616"/><path d="M546,498 H616"/><path d="M546,534 H616"/><path d="M546,570 H616"/><path d="M546,606 H616"/>
+      <path d="M569,356 V646"/><path d="M593,356 V646"/>
+    </g>
+    <rect x="546" y="356" width="15" height="290" fill="#fff" opacity="0.18"/>
+
+    <!-- turquoise dome building (Uzbek) -->
+    <rect x="636" y="540" width="74" height="106" fill="#efe7d1"/>
+    <rect x="630" y="532" width="86" height="12" fill="#ddd0b1"/>
+    <ellipse cx="673" cy="536" rx="44" ry="13" fill="#1b8d99"/>
+    <path d="M629,536 C629,476 648,448 673,436 C698,448 717,476 717,536 Z" fill="url(#dome)"/>
+    <path d="M673,436 C661,448 645,478 645,536 M673,436 C685,448 701,478 701,536 M653,448 C647,478 633,500 633,536 M693,448 C699,478 713,500 713,536" stroke="#5ec3cc" stroke-width="2.2" fill="none" opacity="0.8"/>
+    <rect x="668" y="418" width="10" height="18" fill="#e6b347"/>
+    <circle cx="673" cy="414" r="6" fill="#e6b347"/>
+
+    <!-- minaret -->
+    <rect x="732" y="430" width="26" height="216" fill="#ece2c8"/>
+    <rect x="732" y="476" width="26" height="9" fill="#1f9aa6"/>
+    <rect x="732" y="540" width="26" height="9" fill="#1f9aa6"/>
+    <rect x="728" y="420" width="34" height="12" rx="3" fill="#ece2c8"/>
+    <path d="M729,420 a16 13 0 0 1 32 0 Z" fill="url(#dome)"/>
+    <circle cx="745" cy="400" r="5" fill="#e6b347"/>
+
+    <!-- right glass towers -->
+    <rect x="778" y="392" width="62" height="254" fill="url(#glassB)"/>
+    <g stroke="#7ea1c4" stroke-width="2" opacity="0.6">
+      <path d="M778,424 H840"/><path d="M778,460 H840"/><path d="M778,496 H840"/><path d="M778,532 H840"/><path d="M778,568 H840"/><path d="M778,604 H840"/>
+      <path d="M799,392 V646"/><path d="M819,392 V646"/>
+    </g>
+    <rect x="778" y="392" width="14" height="254" fill="#fff" opacity="0.18"/>
+
+    <rect x="850" y="452" width="56" height="194" fill="#efe7d1"/>
+    <g fill="#41648a" opacity="0.55">
+      <rect x="860" y="468" width="11" height="13"/><rect x="879" y="468" width="11" height="13"/><rect x="898" y="468" width="6" height="13"/>
+      <rect x="860" y="492" width="11" height="13"/><rect x="879" y="492" width="11" height="13"/><rect x="898" y="492" width="6" height="13"/>
+      <rect x="860" y="516" width="11" height="13"/><rect x="879" y="516" width="11" height="13"/><rect x="898" y="516" width="6" height="13"/>
+      <rect x="860" y="540" width="11" height="13"/><rect x="879" y="540" width="11" height="13"/><rect x="898" y="540" width="6" height="13"/>
+    </g>
+  </g>
+
+  <!-- ============ FOREGROUND FOLIAGE ============ -->
+  <g>
+    <!-- dark base band -->
+    <path d="M0,700 C120,650 240,690 360,672 C520,648 640,700 800,676 C960,652 1080,694 1200,668 L1200,900 L0,900 Z" fill="#2e5e2a"/>
+    <!-- mid green mounds -->
+    <g fill="#43743a">
+      <circle cx="90" cy="712" r="74"/><circle cx="170" cy="700" r="64"/><circle cx="250" cy="720" r="70"/>
+      <circle cx="430" cy="710" r="76"/><circle cx="520" cy="700" r="62"/><circle cx="610" cy="722" r="72"/>
+      <circle cx="800" cy="708" r="74"/><circle cx="890" cy="700" r="60"/><circle cx="990" cy="720" r="72"/><circle cx="1110" cy="710" r="74"/>
+      <circle cx="340" cy="730" r="60"/><circle cx="700" cy="730" r="58"/><circle cx="1040" cy="732" r="56"/>
+    </g>
+    <!-- light highlights -->
+    <g fill="#5d9447">
+      <circle cx="80" cy="700" r="44"/><circle cx="240" cy="706" r="42"/><circle cx="420" cy="698" r="46"/>
+      <circle cx="600" cy="708" r="42"/><circle cx="790" cy="696" r="46"/><circle cx="980" cy="708" r="42"/><circle cx="1100" cy="698" r="44"/>
+    </g>
+    <g fill="#74a84e" opacity="0.85">
+      <circle cx="72" cy="690" r="22"/><circle cx="412" cy="688" r="24"/><circle cx="782" cy="686" r="24"/><circle cx="1092" cy="688" r="22"/>
+    </g>
+    <rect x="0" y="820" width="1200" height="80" fill="#2e5e2a"/>
+  </g>
+</svg>

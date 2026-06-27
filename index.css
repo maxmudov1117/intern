@@ -1,0 +1,806 @@
+/* ============ ROOT / TOKENLAR ============ */
+:root {
+    --color-black: #000000;
+    --color-white: #ffffff;
+    --color-bg: #ffffff;
+    --color-text: #000000;
+    --color-muted: #6b6b6b;
+    --color-gray-100: #f6f6f6;
+    --color-gray-200: #eeeeee;
+    --color-border: #e8e8e8;
+
+    --header-height: 88px;
+    --container-pad: clamp(20px, 4vw, 40px);
+    --radius-pill: 999px;
+
+    --font-sans: "Uber Move", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+/* ============ RESET ============ */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    font-family: var(--font-sans);
+    color: var(--color-text);
+    background: var(--color-bg);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+}
+
+button {
+    font-family: inherit;
+    cursor: pointer;
+    border: none;
+    background: none;
+    color: inherit;
+}
+
+img,
+svg {
+    display: block;
+    max-width: 100%;
+}
+
+/* ============ TUGMA ============ */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    font-weight: 500;
+    border-radius: var(--radius-pill);
+    padding: 10px 18px;
+    white-space: nowrap;
+    transition: background-color .15s ease, color .15s ease;
+}
+
+.btn--light {
+    background: var(--color-white);
+    color: var(--color-black);
+}
+
+.btn--light:hover {
+    background: #e8e8e8;
+}
+
+/* ============ 1. HEADER ============ */
+.header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--color-black);
+    color: var(--color-white);
+}
+
+.header__inner {
+    height: var(--header-height);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 var(--container-pad);
+}
+
+/* Chap blok */
+.header__left {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+}
+
+.header__logo {
+    font-size: 1.6rem;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    color: var(--color-white);
+}
+
+/* Navigatsiya */
+.nav__list {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.nav__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    color: var(--color-white);
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 8px 12px;
+    border-radius: 8px;
+    transition: background-color .15s ease;
+}
+
+.nav__link:hover {
+    background: rgba(255, 255, 255, 0.10);
+}
+
+.nav__chevron {
+    width: 16px;
+    height: 16px;
+}
+
+/* O'ng blok */
+.header__right {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.header__lang,
+.header__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--color-white);
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 8px 12px;
+    border-radius: 8px;
+    transition: background-color .15s ease;
+}
+
+.header__lang:hover,
+.header__link:hover {
+    background: rgba(255, 255, 255, 0.10);
+}
+
+.header__globe {
+    width: 20px;
+    height: 20px;
+}
+
+.header__right .btn {
+    margin-left: 6px;
+}
+
+
+/* ============ 2. HERO ============ */
+.hero__inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(32px, 5vw, 72px);
+    align-items: center;
+    padding: clamp(28px, 4vw, 48px) var(--container-pad) clamp(40px, 6vw, 72px);
+}
+
+.hero__content {
+    max-width: 560px;
+}
+
+/* Location */
+.hero__location {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.hero__pin {
+    width: 18px;
+    height: 18px;
+    flex: none;
+}
+
+.hero__change {
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+
+/* Title */
+.hero__title {
+    font-size: clamp(2.75rem, 5vw, 3.5rem);
+    font-weight: 700;
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+    margin: 14px 0 26px;
+}
+
+/* Pickup now */
+.hero__when {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--color-gray-100);
+    border-radius: var(--radius-pill);
+    padding: 13px 18px;
+    font-size: 1rem;
+    font-weight: 500;
+    margin-bottom: 16px;
+}
+
+.hero__when:hover {
+    background: #ececec;
+}
+
+.hero__when-clock {
+    width: 18px;
+    height: 18px;
+}
+
+.hero__when-chevron {
+    width: 16px;
+    height: 16px;
+}
+
+/* Fields + route line */
+.hero__fields {
+    position: relative;
+    margin-bottom: 24px;
+}
+
+.hero__fields::before {
+    content: "";
+    position: absolute;
+    left: 25px;
+    top: 32px;
+    height: 70px;
+    width: 1.5px;
+    background: var(--color-black);
+}
+
+.field {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 64px;
+    background: var(--color-gray-200);
+    border-radius: 8px;
+    padding: 0 14px 0 44px;
+}
+
+.field+.field {
+    margin-top: 6px;
+}
+
+.field:focus-within {
+    box-shadow: inset 0 0 0 2px var(--color-black);
+}
+
+.field__icon {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 12px;
+    display: flex;
+    justify-content: center;
+}
+
+.marker {
+    display: block;
+    background: var(--color-black);
+}
+
+.marker--pickup {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    box-shadow: 0 0 0 2px var(--color-gray-200), 0 0 0 3.5px var(--color-black);
+}
+
+.marker--dropoff {
+    width: 9px;
+    height: 9px;
+    border-radius: 2px;
+}
+
+.field__input {
+    flex: 1;
+    min-width: 0;
+    border: none;
+    background: transparent;
+    font-family: inherit;
+    font-size: 1.0625rem;
+    color: var(--color-text);
+    outline: none;
+}
+
+.field__input::placeholder {
+    color: var(--color-muted);
+}
+
+.field__action {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    color: var(--color-black);
+}
+
+.field__action svg {
+    width: 22px;
+    height: 22px;
+}
+
+/* Actions */
+.hero__actions {
+    display: flex;
+    align-items: center;
+    gap: 26px;
+    flex-wrap: wrap;
+}
+
+.btn--dark {
+    background: var(--color-black);
+    color: var(--color-white);
+    border-radius: 8px;
+    padding: 14px 22px;
+    font-size: 1.0625rem;
+    width: 100%;
+}
+
+.btn--dark:hover {
+    background: #2b2b2b;
+}
+
+.hero__recent {
+    font-size: 1.0625rem;
+    font-weight: 500;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+/* Media + overlay */
+.hero__media {
+    position: relative;
+    justify-self: end;
+    width: 100%;
+    max-width: 540px;
+    aspect-ratio: 1 / 1;
+    border-radius: 10px;
+    overflow: hidden;
+    background: linear-gradient(140deg, #f4b03f 0%, #d9663a 55%, #7a2f24 100%);
+}
+
+.hero__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.hero__overlay {
+    position: absolute;
+    left: 16px;
+    right: 16px;
+    bottom: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 14px 14px 14px 20px;
+    border-radius: 12px;
+    background: rgba(74, 52, 40, 0.5);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+}
+
+.hero__overlay-text {
+    color: var(--color-white);
+    font-size: 1.0625rem;
+    font-weight: 500;
+}
+
+.hero__overlay-btn {
+    padding: 11px 18px;
+}
+
+/* Vaqtinchalik mobil — to'liq responsive 12-qadamda */
+@media (max-width: 900px) {
+    .hero__inner {
+        grid-template-columns: 1fr;
+    }
+
+    .hero__media {
+        justify-self: stretch;
+        max-width: 100%;
+    }
+}
+
+
+.field__control {
+    flex: 1;
+    min-width: 0;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 0;
+    background: transparent;
+    text-align: left;
+    font-family: inherit;
+    font-size: 1.0625rem;
+    color: var(--color-text);
+}
+
+.field__value {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.field__value--empty {
+    color: var(--color-muted);
+}
+
+.field__chevron {
+    width: 18px;
+    height: 18px;
+    flex: none;
+    transition: transform .2s ease;
+}
+
+.field--dropdown.is-open .field__chevron {
+    transform: rotate(180deg);
+}
+
+/* Dropdown roʻyxati */
+.dropdown {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: calc(100% + 6px);
+    z-index: 50;
+    display: none;
+    background: var(--color-white);
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, .16), 0 0 0 1px rgba(0, 0, 0, .05);
+    padding: 8px;
+    max-height: 320px;
+    overflow-y: auto;
+}
+
+.field--dropdown.is-open .dropdown {
+    display: block;
+}
+
+.dropdown__option {
+    list-style: none;
+    padding: 12px 14px;
+    border-radius: 8px;
+    font-size: 1.0625rem;
+    cursor: pointer;
+}
+
+.dropdown__option:hover {
+    background: var(--color-gray-100);
+}
+
+.hero__status {
+    font-size: .95rem;
+    font-weight: 500;
+    min-height: 1.2em;
+    margin-top: 4px;
+}
+
+.hero__status--error {
+    color: #c0392b;
+}
+
+.hero__status--success {
+    color: #1a7f37;
+}
+
+.hero__status--loading {
+    color: var(--color-muted);
+}
+
+.btn--dark:disabled {
+    opacity: .55;
+    cursor: default;
+}
+
+/* ============ 7. GETAWAY ============ */
+.getaway__inner {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: clamp(32px, 5vw, 80px);
+    align-items: center;
+    padding: clamp(40px, 6vw, 80px) var(--container-pad);
+}
+
+.getaway__content {
+    max-width: 480px;
+}
+
+.getaway__title {
+    font-size: clamp(2.25rem, 4vw, 3rem);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 20px;
+}
+
+.getaway__text {
+    font-size: clamp(1rem, 1.1vw, 1.125rem);
+    line-height: 1.5;
+    color: var(--color-text);
+    max-width: 460px;
+    margin-bottom: 32px;
+}
+
+/* Qora city tugmasi (pin + chevron) */
+.getaway__city {
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    min-width: 116px;
+    background: var(--color-black);
+    color: var(--color-white);
+    border-radius: var(--radius-pill);
+    padding: 14px 20px;
+    transition: background-color .15s ease;
+}
+
+.getaway__city:hover {
+    background: #2b2b2b;
+}
+
+.getaway__pin {
+    width: 20px;
+    height: 20px;
+}
+
+.getaway__chevron {
+    width: 16px;
+    height: 16px;
+}
+
+/* Gorizontal rasm */
+.getaway__media {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    border-radius: 10px;
+    overflow: hidden;
+    background: #eef1f4;
+}
+
+.getaway__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Vaqtinchalik mobil */
+@media (max-width: 900px) {
+    .getaway__inner {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ============ FEATURE (Drive / Business) ============ */
+.feature__inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(40px, 6vw, 96px);
+  align-items: center;
+  padding: clamp(40px, 6vw, 80px) var(--container-pad);
+}
+
+/* Kvadrat rasm */
+.feature__media {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #2a2336;
+}
+.feature__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Matn bloki */
+.feature__content { max-width: 520px; }
+.feature__title {
+  font-size: clamp(2.25rem, 4vw, 3rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin-bottom: 22px;
+}
+.feature__text {
+  font-size: clamp(1rem, 1.1vw, 1.125rem);
+  line-height: 1.5;
+  color: var(--color-text);
+  max-width: 480px;
+  margin-bottom: 34px;
+}
+
+/* Tugmalar qatori */
+.feature__actions {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  flex-wrap: wrap;
+}
+.feature__link {
+  font-size: 1.0625rem;
+  font-weight: 500;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* Vaqtinchalik mobil */
+@media (max-width: 900px) {
+  .feature__inner { grid-template-columns: 1fr; }
+}
+
+/* Business — rasm o'ngda, matn chapda */
+.feature--reverse .feature__media { order: 2; }
+.feature--reverse .feature__content { order: 1; }
+.feature--reverse .feature__media { background: #cfe0ef; }
+
+/* Mobil: rasm yana tepaga chiqsin (matndan oldin) */
+@media (max-width: 900px) {
+  .feature--reverse .feature__media { order: 1; }
+  .feature--reverse .feature__content { order: 2; }
+}
+
+/* ============ 10. FOOTER ============ */
+.footer {
+  background: var(--color-black);
+  color: var(--color-white);
+}
+.footer__inner {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: clamp(48px, 6vw, 72px) var(--container-pad) 40px;
+}
+
+/* Yuqori qator */
+.footer__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 56px;
+  gap: 24px;
+}
+.footer__logo {
+  font-size: 2rem;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  color: var(--color-white);
+}
+.footer__reg {
+  text-align: right;
+  font-size: 0.95rem;
+  color: #c9c9c9;
+  line-height: 1.6;
+}
+
+.footer__help {
+  display: inline-block;
+  margin: 28px 0 56px;
+  font-size: 1.0625rem;
+  color: var(--color-white);
+  text-decoration: none;
+}
+.footer__help:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+/* Ustunlar */
+.footer__cols {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+}
+.footer__title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 28px;
+}
+.footer__list { display: flex; flex-direction: column; gap: 22px; }
+.footer__link {
+  font-size: 1.0625rem;
+  color: #e6e6e6;
+  text-decoration: none;
+}
+.footer__link:hover { color: #fff; text-decoration: underline; text-underline-offset: 3px; }
+
+/* Ijtimoiy + ilovalar */
+.footer__bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+  margin-top: 64px;
+}
+.footer__social { display: flex; gap: 8px; }
+.footer__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  color: var(--color-white);
+  transition: background-color .15s ease;
+}
+.footer__icon:hover { background: rgba(255,255,255,0.12); }
+.footer__icon svg { width: 22px; height: 22px; }
+
+.footer__apps { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+.footer__lang {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1.0625rem;
+  color: var(--color-white);
+  text-decoration: none;
+}
+.footer__lang svg { width: 20px; height: 20px; }
+.footer__lang:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+.footer__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  height: 48px;
+  padding: 0 16px;
+  border: 1px solid #5a5a5a;
+  border-radius: 10px;
+  color: var(--color-white);
+  text-decoration: none;
+  transition: border-color .15s ease, background-color .15s ease;
+}
+.footer__badge:hover { border-color: #fff; background: rgba(255,255,255,0.06); }
+.footer__badge svg { width: 24px; height: 24px; flex: none; }
+.footer__badge-text { display: flex; flex-direction: column; line-height: 1.1; }
+.footer__badge-text small { font-size: 0.7rem; color: #c9c9c9; }
+.footer__badge-text strong { font-size: 1.0625rem; font-weight: 600; }
+
+/* Copyright */
+.footer__copyright {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-top: 40px;
+  padding-top: 28px;
+  border-top: 1px solid #2a2a2a;
+  font-size: 0.95rem;
+  color: #c9c9c9;
+}
+.footer__meta { display: flex; gap: 28px; }
+.footer__meta-link { color: #e6e6e6; text-decoration: none; }
+.footer__meta-link:hover { color: #fff; text-decoration: underline; text-underline-offset: 3px; }
+
+/* Responsive */
+@media (max-width: 900px) {
+  .footer__cols { grid-template-columns: repeat(2, 1fr); gap: 40px 24px; }
+  .footer__top { flex-direction: column; }
+  .footer__reg { text-align: left; }
+}
+@media (max-width: 520px) {
+  .footer__cols { grid-template-columns: 1fr; }
+}

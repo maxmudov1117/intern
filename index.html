@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>O'zbek Taxi </title>
+    <link rel="stylesheet" href="index.css" />
+</head>
+
+<body>
+
+    <!-- ===================== 1. HEADER ===================== -->
+    <header class="header">
+        <div class="header__inner">
+
+            <div class="header__left">
+                <a href="#" class="header__logo">O'zbek Taxi</a>
+
+                <nav class="nav">
+                    <ul class="nav__list">
+                        <li class="nav__item"><a href="#" class="nav__link">Ride</a></li>
+                        <li class="nav__item"><a href="#" class="nav__link">Earn</a></li>
+                        <li class="nav__item"><a href="#" class="nav__link">Business</a></li>
+                        <li class="nav__item"><a href="#" class="nav__link">O'zbek Eats</a></li>
+                        <li class="nav__item">
+                            <button class="nav__link nav__link--btn" type="button">
+                                About
+                                <svg class="nav__chevron" viewBox="0 0 16 16" aria-hidden="true">
+                                    <path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </button>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+
+            <!-- O'ng tomon: harakatlar -->
+            <div class="header__right">
+                <button class="header__lang" type="button">
+                    <svg class="header__globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
+                        aria-hidden="true">
+                        <circle cx="12" cy="12" r="9" />
+                        <path d="M3 12h18" />
+                        <path d="M12 3c2.6 2.7 2.6 15.3 0 18M12 3c-2.6 2.7-2.6 15.3 0 18" />
+                    </svg>
+                    EN
+                </button>
+                <a href="#" class="header__link">Help</a>
+            </div>
+
+        </div>
+    </header>
+
+    <!-- ===================== MAIN ===================== -->
+    <main>
+
+        <!-- ===================== 2. HERO ===================== -->
+        <section class="hero">
+            <div class="hero__inner">
+
+                <!-- Chap: matn + forma -->
+                <div class="hero__content">
+
+                    <p class="hero__location">
+                        <svg class="hero__pin" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                            <path
+                                d="M12 2C8.1 2 5 5.1 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.9-3.1-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z" />
+                        </svg>
+                        <span>Fergana, Uzbekistan</span>
+                        <a href="#" class="hero__change">Change city</a>
+                    </p>
+
+                    <h1 class="hero__title">Go anywhere with O'zbek Taxi</h1>
+
+                    <div class="hero__form">
+
+                        <!-- Pickup now -->
+                        <button class="hero__when" type="button">
+                            <svg class="hero__when-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" aria-hidden="true">
+                                <circle cx="12" cy="12" r="9" />
+                                <path d="M12 7.5V12l3 2" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                            <span>Pickup now</span>
+                            <svg class="hero__when-chevron" viewBox="0 0 16 16" aria-hidden="true">
+                                <path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </button>
+
+                        <!-- Inputlar (orasida marshrut chizig'i) -->
+                        <div class="hero__fields">
+
+                            <!-- Boshlangʻich nuqta -->
+                            <div class="field field--dropdown" data-dropdown>
+                                <span class="field__icon"><span class="marker marker--pickup"></span></span>
+                                <button class="field__control" type="button" data-dropdown-toggle
+                                    aria-haspopup="listbox" aria-expanded="false">
+                                    <span class="field__value field__value--empty">Enter the starting location</span>
+                                    <svg class="field__chevron" viewBox="0 0 16 16" aria-hidden="true">
+                                        <path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                </button>
+                                <input type="hidden" name="from" value="" />
+                                <ul class="dropdown" role="listbox"></ul>
+                            </div>
+
+                            <!-- Manzil -->
+                            <div class="field field--dropdown" data-dropdown>
+                                <span class="field__icon"><span class="marker marker--pickup"></span></span>
+                                <button class="field__control" type="button" data-dropdown-toggle
+                                    aria-haspopup="listbox" aria-expanded="false">
+                                    <span class="field__value field__value--empty">Enter the destination</span>
+                                    <svg class="field__chevron" viewBox="0 0 16 16" aria-hidden="true">
+                                        <path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                </button>
+                                <input type="hidden" name="to" value="" />
+                                <ul class="dropdown" role="listbox"></ul>
+                            </div>
+
+                            <!-- Telefon raqami -->
+                            <div class="field">
+                                <span class="field__icon"><span class="marker marker--dropoff"></span></span>
+                                <input class="field__input" type="tel" placeholder="+998 (__) ___-__-__" />
+                            </div>
+
+                        </div>
+
+                        <!-- Harakatlar -->
+                        <div class="hero__actions">
+                            <button class="btn btn--dark" type="button" id="orderSubmit">Submit</button>
+                            <p class="hero_status" id="orderStatus" role="status" aria-live="polite"></p>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- O'ng: rasm + overlay -->
+                <div class="hero__media">
+                    <img class="hero__img" src="images/hero.svg" alt="" onerror="this.style.display='none'" />
+
+                </div>
+
+
+
+            </div>
+            <!-- ===================== 7. GETAWAY (City Hub) ===================== -->
+            <section class="getaway">
+                <div class="getaway__inner">
+
+                    <!-- Chap: matn + city tugma -->
+                    <div class="getaway__content">
+                        <h2 class="getaway__title">Planning your next getaway with O'zbek Taxi</h2>
+                        <p class="getaway__text">
+                            O'zbek Taxi is available in many cities across Uzbekistan. Check out the list of cities
+                            below to see if O'zbek Taxi is available in your area.
+                        </p>
+                        <button class="getaway__city" type="button" aria-label="Select city">
+                            <svg class="getaway__pin" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                <path
+                                    d="M12 2C8.1 2 5 5.1 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.9-3.1-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z" />
+                            </svg>
+                            <svg class="getaway__chevron" viewBox="0 0 16 16" aria-hidden="true">
+                                <path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.8"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </button>
+                    </div>
+
+                    <!-- O'ng: gorizontal rasm -->
+                    <div class="getaway__media">
+                        <img class="getaway__img" src="images/getaway.svg" alt="" onerror="this.style.display='none'" />
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- ===================== 8. DRIVE ===================== -->
+            <section class="feature">
+                <div class="feature__inner">
+
+                    <!-- Chap: rasm -->
+                    <div class="feature__media">
+                        <img class="feature__img" src="images/drive.svg" alt="" onerror="this.style.display='none'" />
+                    </div>
+
+                    <!-- O'ng: matn + tugmalar -->
+                    <div class="feature__content">
+                        <h2 class="feature__title">Drive when you want, make what you need</h2>
+                        <p class="feature__text">
+                            Make money on your schedule with deliveries or rides—or both.
+                            You can use your own car or choose a rental through Uber.
+                        </p>
+                        <div class="feature__actions">
+                            <a href="#" class="btn btn--dark">Get started</a>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- ===================== 9. BUSINESS ===================== -->
+            <section class="feature feature--reverse">
+                <div class="feature__inner">
+
+                    <!-- Chap: matn + tugmalar -->
+                    <div class="feature__content">
+                        <h2 class="feature__title">The O'zbek Taxi you know, reimagined for business</h2>
+                        <p class="feature__text">
+                            O'zbek Taxi for Business helps you get your employees where they need to go, with a
+                            centralized dashboard and consolidated billing.
+                        </p>
+                        <div class="feature__actions">
+                            <a href="#" class="btn btn--dark">Get started</a>
+                        </div>
+                    </div>
+
+                    <!-- O'ng: rasm -->
+                    <div class="feature__media">
+                        <img class="feature__img" src="images/business.svg" alt=""
+                            onerror="this.style.display='none'" />
+                    </div>
+
+                </div>
+            </section>
+
+        </section>
+
+    </main>
+
+    </main>
+    <!-- (yuqoridagi </main> — Business seksiyadan keyin main yopiladi) -->
+
+    <!-- ===================== 10. FOOTER ===================== -->
+    <footer class="footer">
+        <div class="footer__inner">
+
+            <!-- Yuqori qator: logo + ro'yxatdan o'tish ma'lumotlari -->
+            <div class="footer__top">
+                <a href="#" class="footer__logo">O'zbek Taxi</a>
+                <div class="footer__reg">
+                    <p class="footer__reg-text">O'zbek Taxi is a registered trademark of O'zbek Taxi Technologies Inc.</p>
+                    <p class="footer__reg-text">O'zbek Taxi is not a transportation provider. O'zbek Taxi connects
+                        passengers with transportation providers.</p>
+                </div>
+            </div>
+
+
+            <!-- Ustunlar -->
+            <nav class="footer__cols" aria-label="Footer">
+                <div class="footer__col">
+                    <h3 class="footer__title">Company</h3>
+                    <ul class="footer__list">
+                        <li><a href="#" class="footer__link">About us</a></li>
+                        <li><a href="#" class="footer__link">Our offerings</a></li>
+                        <li><a href="#" class="footer__link">Newsroom</a></li>
+                        <li><a href="#" class="footer__link">Investors</a></li>
+                        <li><a href="#" class="footer__link">Blog</a></li>
+                        <li><a href="#" class="footer__link">Careers</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer__col">
+                    <h3 class="footer__title">Products</h3>
+                    <ul class="footer__list">
+                        <li><a href="#" class="footer__link">Ride</a></li>
+                        <li><a href="#" class="footer__link">Drive</a></li>
+                        <li><a href="#" class="footer__link">Deliver</a></li>
+                        <li><a href="#" class="footer__link">Eat</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer__col">
+                    <h3 class="footer__title">Global citizenship</h3>
+                    <ul class="footer__list">
+                        <li><a href="#" class="footer__link">Safety</a></li>
+                        <li><a href="#" class="footer__link">Sustainability</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer__col">
+                    <h3 class="footer__title">Travel</h3>
+                    <ul class="footer__list">
+                        <li><a href="#" class="footer__link">Reserve</a></li>
+                        <li><a href="#" class="footer__link">Airports</a></li>
+                        <li><a href="#" class="footer__link">Cities</a></li>
+                    </ul>
+                </div>
+            </nav>
+                
+            <!-- Copyright -->
+            <div class="footer__copyright">
+                <span>© 2026 O'zbek Taxi Technologies Inc.</span>
+                <div class="footer__meta">
+                    <a href="#" class="footer__meta-link">Privacy</a>
+                    <a href="#" class="footer__meta-link">Accessibility</a>
+                    <a href="#" class="footer__meta-link">Terms</a>
+                </div>
+            </div>
+
+        </div>
+    </footer>
+</body>
+
+</html>
+
+<script src="index.js"></script>
+</body>
+
+</html>
