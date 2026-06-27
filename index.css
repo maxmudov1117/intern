@@ -245,22 +245,58 @@ svg {
     height: 16px;
 }
 
-/* Fields + route line */
+/* ============ FORMA MAYDONLARI ============ */
 .hero__fields {
     position: relative;
     margin-bottom: 24px;
 }
 
-.hero__fields::before {
-    content: "";
-    position: absolute;
-    left: 25px;
-    top: 32px;
-    height: 70px;
-    width: 1.5px;
-    background: var(--color-black);
+/* Manzil guruhi (Qayerdan / Qayerga) */
+.loc-group + .loc-group {
+    margin-top: 14px;
 }
 
+.loc-label {
+    display: block;
+    font-size: .9rem;
+    font-weight: 600;
+    color: var(--color-muted);
+    margin: 0 0 6px 4px;
+}
+
+/* Viloyat | Tuman — yonma-yon */
+.loc-row {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 6px;
+    align-items: start;
+}
+
+/* Grid ichida ikkinchi field (Tuman) ortiqcha margin olmasin */
+.loc-row .field + .field {
+    margin-top: 0;
+}
+
+/* Tuman maydoni — markersiz, oddiy chap padding */
+.field--plain {
+    padding-left: 18px;
+}
+
+/* O'chirilgan (viloyat tanlanmagan) holat */
+.field.is-disabled {
+    opacity: .5;
+}
+
+.field.is-disabled .field__control {
+    cursor: not-allowed;
+}
+
+/* Telefon maydonini guruhdan ajratish */
+.hero__fields > .field:last-child {
+    margin-top: 14px;
+}
+
+/* Field (umumiy) */
 .field {
     position: relative;
     display: flex;
@@ -271,7 +307,7 @@ svg {
     padding: 0 14px 0 44px;
 }
 
-.field+.field {
+.field + .field {
     margin-top: 6px;
 }
 
@@ -336,91 +372,7 @@ svg {
     height: 22px;
 }
 
-/* Actions */
-.hero__actions {
-    display: flex;
-    align-items: center;
-    gap: 26px;
-    flex-wrap: wrap;
-}
-
-.btn--dark {
-    background: var(--color-black);
-    color: var(--color-white);
-    border-radius: 8px;
-    padding: 14px 22px;
-    font-size: 1.0625rem;
-    width: 100%;
-}
-
-.btn--dark:hover {
-    background: #2b2b2b;
-}
-
-.hero__recent {
-    font-size: 1.0625rem;
-    font-weight: 500;
-    text-decoration: underline;
-    text-underline-offset: 3px;
-}
-
-/* Media + overlay */
-.hero__media {
-    position: relative;
-    justify-self: end;
-    width: 100%;
-    max-width: 540px;
-    aspect-ratio: 1 / 1;
-    border-radius: 10px;
-    overflow: hidden;
-    background: linear-gradient(140deg, #f4b03f 0%, #d9663a 55%, #7a2f24 100%);
-}
-
-.hero__img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.hero__overlay {
-    position: absolute;
-    left: 16px;
-    right: 16px;
-    bottom: 16px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 16px;
-    padding: 14px 14px 14px 20px;
-    border-radius: 12px;
-    background: rgba(74, 52, 40, 0.5);
-    -webkit-backdrop-filter: blur(10px);
-    backdrop-filter: blur(10px);
-}
-
-.hero__overlay-text {
-    color: var(--color-white);
-    font-size: 1.0625rem;
-    font-weight: 500;
-}
-
-.hero__overlay-btn {
-    padding: 11px 18px;
-}
-
-/* Vaqtinchalik mobil — to'liq responsive 12-qadamda */
-@media (max-width: 900px) {
-    .hero__inner {
-        grid-template-columns: 1fr;
-    }
-
-    .hero__media {
-        justify-self: stretch;
-        max-width: 100%;
-    }
-}
-
-
+/* Dropdown control (viloyat/tuman tugmasi) */
 .field__control {
     flex: 1;
     min-width: 0;
@@ -490,6 +442,47 @@ svg {
     background: var(--color-gray-100);
 }
 
+/* Mobil: viloyat va tuman ustma-ust */
+@media (max-width: 560px) {
+    .loc-row {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Actions */
+.hero__actions {
+    display: flex;
+    align-items: center;
+    gap: 26px;
+    flex-wrap: wrap;
+}
+
+.btn--dark {
+    background: var(--color-black);
+    color: var(--color-white);
+    border-radius: 8px;
+    padding: 14px 22px;
+    font-size: 1.0625rem;
+    width: 100%;
+}
+
+.btn--dark:hover {
+    background: #2b2b2b;
+}
+
+.btn--dark:disabled {
+    opacity: .55;
+    cursor: default;
+}
+
+.hero__recent {
+    font-size: 1.0625rem;
+    font-weight: 500;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+/* Status xabari */
 .hero__status {
     font-size: .95rem;
     font-weight: 500;
@@ -509,9 +502,60 @@ svg {
     color: var(--color-muted);
 }
 
-.btn--dark:disabled {
-    opacity: .55;
-    cursor: default;
+/* Media + overlay */
+.hero__media {
+    position: relative;
+    justify-self: end;
+    width: 100%;
+    max-width: 540px;
+    aspect-ratio: 1 / 1;
+    border-radius: 10px;
+    overflow: hidden;
+    background: linear-gradient(140deg, #f4b03f 0%, #d9663a 55%, #7a2f24 100%);
+}
+
+.hero__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.hero__overlay {
+    position: absolute;
+    left: 16px;
+    right: 16px;
+    bottom: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 14px 14px 14px 20px;
+    border-radius: 12px;
+    background: rgba(74, 52, 40, 0.5);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+}
+
+.hero__overlay-text {
+    color: var(--color-white);
+    font-size: 1.0625rem;
+    font-weight: 500;
+}
+
+.hero__overlay-btn {
+    padding: 11px 18px;
+}
+
+/* Vaqtinchalik mobil — to'liq responsive 12-qadamda */
+@media (max-width: 900px) {
+    .hero__inner {
+        grid-template-columns: 1fr;
+    }
+
+    .hero__media {
+        justify-self: stretch;
+        max-width: 100%;
+    }
 }
 
 /* ============ 7. GETAWAY ============ */
@@ -596,211 +640,321 @@ svg {
 
 /* ============ FEATURE (Drive / Business) ============ */
 .feature__inner {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: clamp(40px, 6vw, 96px);
-  align-items: center;
-  padding: clamp(40px, 6vw, 80px) var(--container-pad);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(40px, 6vw, 96px);
+    align-items: center;
+    padding: clamp(40px, 6vw, 80px) var(--container-pad);
 }
 
 /* Kvadrat rasm */
 .feature__media {
-  width: 100%;
-  aspect-ratio: 1 / 1;
-  border-radius: 12px;
-  overflow: hidden;
-  background: #2a2336;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #2a2336;
 }
+
 .feature__img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
 }
 
 /* Matn bloki */
-.feature__content { max-width: 520px; }
-.feature__title {
-  font-size: clamp(2.25rem, 4vw, 3rem);
-  font-weight: 700;
-  line-height: 1.1;
-  letter-spacing: -0.02em;
-  margin-bottom: 22px;
+.feature__content {
+    max-width: 520px;
 }
+
+.feature__title {
+    font-size: clamp(2.25rem, 4vw, 3rem);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 22px;
+}
+
 .feature__text {
-  font-size: clamp(1rem, 1.1vw, 1.125rem);
-  line-height: 1.5;
-  color: var(--color-text);
-  max-width: 480px;
-  margin-bottom: 34px;
+    font-size: clamp(1rem, 1.1vw, 1.125rem);
+    line-height: 1.5;
+    color: var(--color-text);
+    max-width: 480px;
+    margin-bottom: 34px;
 }
 
 /* Tugmalar qatori */
 .feature__actions {
-  display: flex;
-  align-items: center;
-  gap: 28px;
-  flex-wrap: wrap;
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    flex-wrap: wrap;
 }
+
 .feature__link {
-  font-size: 1.0625rem;
-  font-weight: 500;
-  text-decoration: underline;
-  text-underline-offset: 3px;
+    font-size: 1.0625rem;
+    font-weight: 500;
+    text-decoration: underline;
+    text-underline-offset: 3px;
 }
 
 /* Vaqtinchalik mobil */
 @media (max-width: 900px) {
-  .feature__inner { grid-template-columns: 1fr; }
+    .feature__inner {
+        grid-template-columns: 1fr;
+    }
 }
 
 /* Business — rasm o'ngda, matn chapda */
-.feature--reverse .feature__media { order: 2; }
-.feature--reverse .feature__content { order: 1; }
-.feature--reverse .feature__media { background: #cfe0ef; }
+.feature--reverse .feature__media {
+    order: 2;
+    background: #cfe0ef;
+}
+
+.feature--reverse .feature__content {
+    order: 1;
+}
 
 /* Mobil: rasm yana tepaga chiqsin (matndan oldin) */
 @media (max-width: 900px) {
-  .feature--reverse .feature__media { order: 1; }
-  .feature--reverse .feature__content { order: 2; }
+    .feature--reverse .feature__media {
+        order: 1;
+    }
+
+    .feature--reverse .feature__content {
+        order: 2;
+    }
 }
 
 /* ============ 10. FOOTER ============ */
 .footer {
-  background: var(--color-black);
-  color: var(--color-white);
+    background: var(--color-black);
+    color: var(--color-white);
 }
+
 .footer__inner {
-  max-width: 1320px;
-  margin: 0 auto;
-  padding: clamp(48px, 6vw, 72px) var(--container-pad) 40px;
+    max-width: 1320px;
+    margin: 0 auto;
+    padding: clamp(48px, 6vw, 72px) var(--container-pad) 40px;
 }
 
 /* Yuqori qator */
 .footer__top {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: 56px;
-  gap: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 56px;
+    gap: 24px;
 }
+
 .footer__logo {
-  font-size: 2rem;
-  font-weight: 500;
-  letter-spacing: -0.02em;
-  color: var(--color-white);
+    font-size: 2rem;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    color: var(--color-white);
 }
+
 .footer__reg {
-  text-align: right;
-  font-size: 0.95rem;
-  color: #c9c9c9;
-  line-height: 1.6;
+    text-align: right;
+    font-size: 0.95rem;
+    color: #c9c9c9;
+    line-height: 1.6;
 }
 
 .footer__help {
-  display: inline-block;
-  margin: 28px 0 56px;
-  font-size: 1.0625rem;
-  color: var(--color-white);
-  text-decoration: none;
+    display: inline-block;
+    margin: 28px 0 56px;
+    font-size: 1.0625rem;
+    color: var(--color-white);
+    text-decoration: none;
 }
-.footer__help:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+.footer__help:hover {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
 
 /* Ustunlar */
 .footer__cols {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 32px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
 }
+
 .footer__title {
-  font-size: 1.25rem;
-  font-weight: 700;
-  margin-bottom: 28px;
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 28px;
 }
-.footer__list { display: flex; flex-direction: column; gap: 22px; }
+
+.footer__list {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+}
+
 .footer__link {
-  font-size: 1.0625rem;
-  color: #e6e6e6;
-  text-decoration: none;
+    font-size: 1.0625rem;
+    color: #e6e6e6;
+    text-decoration: none;
 }
-.footer__link:hover { color: #fff; text-decoration: underline; text-underline-offset: 3px; }
+
+.footer__link:hover {
+    color: #fff;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
 
 /* Ijtimoiy + ilovalar */
 .footer__bottom {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 24px;
-  flex-wrap: wrap;
-  margin-top: 64px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
+    margin-top: 64px;
 }
-.footer__social { display: flex; gap: 8px; }
-.footer__icon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  color: var(--color-white);
-  transition: background-color .15s ease;
-}
-.footer__icon:hover { background: rgba(255,255,255,0.12); }
-.footer__icon svg { width: 22px; height: 22px; }
 
-.footer__apps { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
-.footer__lang {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 1.0625rem;
-  color: var(--color-white);
-  text-decoration: none;
+.footer__social {
+    display: flex;
+    gap: 8px;
 }
-.footer__lang svg { width: 20px; height: 20px; }
-.footer__lang:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+.footer__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    color: var(--color-white);
+    transition: background-color .15s ease;
+}
+
+.footer__icon:hover {
+    background: rgba(255, 255, 255, 0.12);
+}
+
+.footer__icon svg {
+    width: 22px;
+    height: 22px;
+}
+
+.footer__apps {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.footer__lang {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 1.0625rem;
+    color: var(--color-white);
+    text-decoration: none;
+}
+
+.footer__lang svg {
+    width: 20px;
+    height: 20px;
+}
+
+.footer__lang:hover {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
 
 .footer__badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  height: 48px;
-  padding: 0 16px;
-  border: 1px solid #5a5a5a;
-  border-radius: 10px;
-  color: var(--color-white);
-  text-decoration: none;
-  transition: border-color .15s ease, background-color .15s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    height: 48px;
+    padding: 0 16px;
+    border: 1px solid #5a5a5a;
+    border-radius: 10px;
+    color: var(--color-white);
+    text-decoration: none;
+    transition: border-color .15s ease, background-color .15s ease;
 }
-.footer__badge:hover { border-color: #fff; background: rgba(255,255,255,0.06); }
-.footer__badge svg { width: 24px; height: 24px; flex: none; }
-.footer__badge-text { display: flex; flex-direction: column; line-height: 1.1; }
-.footer__badge-text small { font-size: 0.7rem; color: #c9c9c9; }
-.footer__badge-text strong { font-size: 1.0625rem; font-weight: 600; }
+
+.footer__badge:hover {
+    border-color: #fff;
+    background: rgba(255, 255, 255, 0.06);
+}
+
+.footer__badge svg {
+    width: 24px;
+    height: 24px;
+    flex: none;
+}
+
+.footer__badge-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.1;
+}
+
+.footer__badge-text small {
+    font-size: 0.7rem;
+    color: #c9c9c9;
+}
+
+.footer__badge-text strong {
+    font-size: 1.0625rem;
+    font-weight: 600;
+}
 
 /* Copyright */
 .footer__copyright {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 16px;
-  flex-wrap: wrap;
-  margin-top: 40px;
-  padding-top: 28px;
-  border-top: 1px solid #2a2a2a;
-  font-size: 0.95rem;
-  color: #c9c9c9;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-top: 40px;
+    padding-top: 28px;
+    border-top: 1px solid #2a2a2a;
+    font-size: 0.95rem;
+    color: #c9c9c9;
 }
-.footer__meta { display: flex; gap: 28px; }
-.footer__meta-link { color: #e6e6e6; text-decoration: none; }
-.footer__meta-link:hover { color: #fff; text-decoration: underline; text-underline-offset: 3px; }
+
+.footer__meta {
+    display: flex;
+    gap: 28px;
+}
+
+.footer__meta-link {
+    color: #e6e6e6;
+    text-decoration: none;
+}
+
+.footer__meta-link:hover {
+    color: #fff;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
 
 /* Responsive */
 @media (max-width: 900px) {
-  .footer__cols { grid-template-columns: repeat(2, 1fr); gap: 40px 24px; }
-  .footer__top { flex-direction: column; }
-  .footer__reg { text-align: left; }
+    .footer__cols {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 40px 24px;
+    }
+
+    .footer__top {
+        flex-direction: column;
+    }
+
+    .footer__reg {
+        text-align: left;
+    }
 }
+
 @media (max-width: 520px) {
-  .footer__cols { grid-template-columns: 1fr; }
+    .footer__cols {
+        grid-template-columns: 1fr;
+    }
 }

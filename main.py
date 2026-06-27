@@ -9,7 +9,6 @@ from aiogram import Bot, Dispatcher
 from aiogram.client.default import DefaultBotProperties
 from aiogram.enums import ParseMode
 from aiogram.filters import CommandStart, Command
-from aiogram.types import Message
 from aiogram.types import Message, CallbackQuery, InlineKeyboardMarkup
 from aiogram.filters.callback_data import CallbackData
 from aiogram.utils.keyboard import InlineKeyboardBuilder
@@ -33,14 +32,15 @@ bot = Bot(token=BOT_TOKEN, default=DefaultBotProperties(parse_mode=ParseMode.HTM
 dp = Dispatcher()
 
 
-class OrderDB(CallbackData, prefix="order"):
-    action: str # "confirm" | "reject"
+# ---------- Tasdiqlash tugmalari ----------
+class OrderCB(CallbackData, prefix="order"):
+    action: str  # "confirm" | "reject"
 
 
-def oreder_keyboard() -> InlineKeyboardMarkup:
+def order_keyboard() -> InlineKeyboardMarkup:
     kb = InlineKeyboardBuilder()
-    kb.button(text="✅ Tasdiqlash", callback_data=OrderDB(action="confirm"))
-    kb.button(text="❌ Rad etish", callback_data=OrderDB(action="reject"))
+    kb.button(text="✅ Tasdiqlash", callback_data=OrderCB(action="confirm"))
+    kb.button(text="❌ Rad etish", callback_data=OrderCB(action="reject"))
     kb.adjust(2)
     return kb.as_markup()
 
@@ -67,11 +67,13 @@ async def handle_order(request: web.Request) -> web.Response:
     except Exception:
         return web.json_response({"ok": False, "error": "invalid_json"}, status=400)
 
-    from_ = str(data.get("from", "")).strip()
-    to    = str(data.get("to", "")).strip()
-    phone = str(data.get("phone", "")).strip()
+    from_region   = str(data.get("fromRegion", "")).strip()
+    from_district = str(data.get("fromDistrict", "")).strip()
+    to_region     = str(data.get("toRegion", "")).strip()
+    to_district   = str(data.get("toDistrict", "")).strip()
+    phone         = str(data.get("phone", "")).strip()
 
-    if not from_ or not to or not phone:
+    if not (from_region and from_district and to_region and to_district and phone):
         return web.json_response({"ok": False, "error": "missing_fields"}, status=422)
 
     if not ADMIN_CHAT_ID:
@@ -79,14 +81,14 @@ async def handle_order(request: web.Request) -> web.Response:
 
     text = (
         "🚕 <b>Yangi buyurtma!</b>\n\n"
-        f"📍 <b>Qayerdan:</b> {html.escape(from_)}\n"
-        f"🏁 <b>Qayerga:</b> {html.escape(to)}\n"
+        f"📍 <b>Qayerdan:</b> {html.escape(from_region)}, {html.escape(from_district)}\n"
+        f"🏁 <b>Qayerga:</b> {html.escape(to_region)}, {html.escape(to_district)}\n"
         f"📞 <b>Telefon:</b> {html.escape(phone)}\n"
         f"🕒 <b>Vaqt:</b> {datetime.now():%Y-%m-%d %H:%M}"
     )
 
     try:
-        await bot.send_message(ADMIN_CHAT_ID, text, reply_markup=oreder_keyboard())
+        await bot.send_message(ADMIN_CHAT_ID, text, reply_markup=order_keyboard())
     except Exception as e:
         logger.exception("send_message xato: %s", e)
         return web.json_response({"ok": False, "error": "send_failed"}, status=502)
@@ -94,8 +96,9 @@ async def handle_order(request: web.Request) -> web.Response:
     return web.json_response({"ok": True})
 
 
-@dp.callback_query(OrderDB.filter())
-async def on_order_decision(callback: CallbackQuery, callback_data: OrderDB):
+# ---------- Tasdiqlash / rad etish ----------
+@dp.callback_query(OrderCB.filter())
+async def on_order_decision(callback: CallbackQuery, callback_data: OrderCB):
     decided_by = html.escape(callback.from_user.full_name)
     now = datetime.now().strftime("%Y-%m-%d %H:%M")
 

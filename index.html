@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>O'zbek Taxi </title>
+    <title>O'zbek Taxi</title>
     <link rel="stylesheet" href="index.css" />
 </head>
 
@@ -90,40 +90,80 @@
                             </svg>
                         </button>
 
-                        <!-- Inputlar (orasida marshrut chizig'i) -->
+                        <!-- Forma maydonlari -->
                         <div class="hero__fields">
 
-                            <!-- Boshlangʻich nuqta -->
-                            <div class="field field--dropdown" data-dropdown>
-                                <span class="field__icon"><span class="marker marker--pickup"></span></span>
-                                <button class="field__control" type="button" data-dropdown-toggle
-                                    aria-haspopup="listbox" aria-expanded="false">
-                                    <span class="field__value field__value--empty">Enter the starting location</span>
-                                    <svg class="field__chevron" viewBox="0 0 16 16" aria-hidden="true">
-                                        <path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6"
-                                            stroke-linecap="round" stroke-linejoin="round" />
-                                    </svg>
-                                </button>
-                                <input type="hidden" name="from" value="" />
-                                <ul class="dropdown" role="listbox"></ul>
+                            <!-- QAYERDAN -->
+                            <div class="loc-group">
+                                <div class="loc-row">
+                                    <!-- viloyat -->
+                                    <div class="field field--dropdown" data-dropdown data-role="region"
+                                        data-target="fromDistrict">
+                                        <span class="field__icon"><span class="marker marker--pickup"></span></span>
+                                        <button class="field__control" type="button" data-dropdown-toggle
+                                            aria-haspopup="listbox" aria-expanded="false">
+                                            <span class="field__value field__value--empty">Viloyat</span>
+                                            <svg class="field__chevron" viewBox="0 0 16 16" aria-hidden="true">
+                                                <path d="M4 6l4 4 4-4" fill="none" stroke="currentColor"
+                                                    stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+                                            </svg>
+                                        </button>
+                                        <input type="hidden" name="fromRegion" value="" />
+                                        <ul class="dropdown" role="listbox"></ul>
+                                    </div>
+                                    <!-- tuman -->
+                                    <div class="field field--dropdown field--plain is-disabled" data-dropdown
+                                        data-role="district" id="fromDistrict">
+                                        <button class="field__control" type="button" data-dropdown-toggle
+                                            aria-haspopup="listbox" aria-expanded="false" disabled>
+                                            <span class="field__value field__value--empty">Tuman</span>
+                                            <svg class="field__chevron" viewBox="0 0 16 16" aria-hidden="true">
+                                                <path d="M4 6l4 4 4-4" fill="none" stroke="currentColor"
+                                                    stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+                                            </svg>
+                                        </button>
+                                        <input type="hidden" name="fromDistrict" value="" />
+                                        <ul class="dropdown" role="listbox"></ul>
+                                    </div>
+                                </div>
                             </div>
 
-                            <!-- Manzil -->
-                            <div class="field field--dropdown" data-dropdown>
-                                <span class="field__icon"><span class="marker marker--pickup"></span></span>
-                                <button class="field__control" type="button" data-dropdown-toggle
-                                    aria-haspopup="listbox" aria-expanded="false">
-                                    <span class="field__value field__value--empty">Enter the destination</span>
-                                    <svg class="field__chevron" viewBox="0 0 16 16" aria-hidden="true">
-                                        <path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6"
-                                            stroke-linecap="round" stroke-linejoin="round" />
-                                    </svg>
-                                </button>
-                                <input type="hidden" name="to" value="" />
-                                <ul class="dropdown" role="listbox"></ul>
+                            <!-- QAYERGA -->
+                            <div class="loc-group">
+                                <div class="loc-row">
+                                    <!-- viloyat -->
+                                    <div class="field field--dropdown" data-dropdown data-role="region"
+                                        data-target="toDistrict">
+                                        <span class="field__icon"><span class="marker marker--dropoff"></span></span>
+                                        <button class="field__control" type="button" data-dropdown-toggle
+                                            aria-haspopup="listbox" aria-expanded="false">
+                                            <span class="field__value field__value--empty">Viloyat</span>
+                                            <svg class="field__chevron" viewBox="0 0 16 16" aria-hidden="true">
+                                                <path d="M4 6l4 4 4-4" fill="none" stroke="currentColor"
+                                                    stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+                                            </svg>
+                                        </button>
+                                        <input type="hidden" name="toRegion" value="" />
+                                        <ul class="dropdown" role="listbox"></ul>
+                                    </div>
+                                    <!-- tuman -->
+                                    <div class="field field--dropdown field--plain is-disabled" data-dropdown
+                                        data-role="district" id="toDistrict">
+                                        <button class="field__control" type="button" data-dropdown-toggle
+                                            aria-haspopup="listbox" aria-expanded="false" disabled>
+                                            <span class="field__value field__value--empty">Tuman</span>
+                                            <svg class="field__chevron" viewBox="0 0 16 16" aria-hidden="true">
+                                                <path d="M4 6l4 4 4-4" fill="none" stroke="currentColor"
+                                                    stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+                                            </svg>
+                                        </button>
+                                        <input type="hidden" name="toDistrict" value="" />
+                                        <ul class="dropdown" role="listbox"></ul>
+                                    </div>
+                                </div>
                             </div>
 
-                            <!-- Telefon raqami -->
+                            <!-- TELEFON -->
                             <div class="field">
                                 <span class="field__icon"><span class="marker marker--dropoff"></span></span>
                                 <input class="field__input" type="tel" placeholder="+998 (__) ___-__-__" />
@@ -134,7 +174,7 @@
                         <!-- Harakatlar -->
                         <div class="hero__actions">
                             <button class="btn btn--dark" type="button" id="orderSubmit">Submit</button>
-                            <p class="hero_status" id="orderStatus" role="status" aria-live="polite"></p>
+                            <p class="hero__status" id="orderStatus" role="status" aria-live="polite"></p>
                         </div>
 
                     </div>
@@ -143,104 +183,97 @@
                 <!-- O'ng: rasm + overlay -->
                 <div class="hero__media">
                     <img class="hero__img" src="images/hero.svg" alt="" onerror="this.style.display='none'" />
-
                 </div>
-
-
 
             </div>
-            <!-- ===================== 7. GETAWAY (City Hub) ===================== -->
-            <section class="getaway">
-                <div class="getaway__inner">
+        </section>
 
-                    <!-- Chap: matn + city tugma -->
-                    <div class="getaway__content">
-                        <h2 class="getaway__title">Planning your next getaway with O'zbek Taxi</h2>
-                        <p class="getaway__text">
-                            O'zbek Taxi is available in many cities across Uzbekistan. Check out the list of cities
-                            below to see if O'zbek Taxi is available in your area.
-                        </p>
-                        <button class="getaway__city" type="button" aria-label="Select city">
-                            <svg class="getaway__pin" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                                <path
-                                    d="M12 2C8.1 2 5 5.1 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.9-3.1-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z" />
-                            </svg>
-                            <svg class="getaway__chevron" viewBox="0 0 16 16" aria-hidden="true">
-                                <path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.8"
-                                    stroke-linecap="round" stroke-linejoin="round" />
-                            </svg>
-                        </button>
-                    </div>
+        <!-- ===================== 7. GETAWAY (City Hub) ===================== -->
+        <section class="getaway">
+            <div class="getaway__inner">
 
-                    <!-- O'ng: gorizontal rasm -->
-                    <div class="getaway__media">
-                        <img class="getaway__img" src="images/getaway.svg" alt="" onerror="this.style.display='none'" />
-                    </div>
-
+                <!-- Chap: matn + city tugma -->
+                <div class="getaway__content">
+                    <h2 class="getaway__title">Planning your next getaway with O'zbek Taxi</h2>
+                    <p class="getaway__text">
+                        O'zbek Taxi is available in many cities across Uzbekistan. Check out the list of cities
+                        below to see if O'zbek Taxi is available in your area.
+                    </p>
+                    <button class="getaway__city" type="button" aria-label="Select city">
+                        <svg class="getaway__pin" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                            <path
+                                d="M12 2C8.1 2 5 5.1 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.9-3.1-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z" />
+                        </svg>
+                        <svg class="getaway__chevron" viewBox="0 0 16 16" aria-hidden="true">
+                            <path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.8"
+                                stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </button>
                 </div>
-            </section>
 
-            <!-- ===================== 8. DRIVE ===================== -->
-            <section class="feature">
-                <div class="feature__inner">
-
-                    <!-- Chap: rasm -->
-                    <div class="feature__media">
-                        <img class="feature__img" src="images/drive.svg" alt="" onerror="this.style.display='none'" />
-                    </div>
-
-                    <!-- O'ng: matn + tugmalar -->
-                    <div class="feature__content">
-                        <h2 class="feature__title">Drive when you want, make what you need</h2>
-                        <p class="feature__text">
-                            Make money on your schedule with deliveries or rides—or both.
-                            You can use your own car or choose a rental through Uber.
-                        </p>
-                        <div class="feature__actions">
-                            <a href="#" class="btn btn--dark">Get started</a>
-                        </div>
-                    </div>
-
+                <!-- O'ng: gorizontal rasm -->
+                <div class="getaway__media">
+                    <img class="getaway__img" src="images/getaway.svg" alt="" onerror="this.style.display='none'" />
                 </div>
-            </section>
 
-            <!-- ===================== 9. BUSINESS ===================== -->
-            <section class="feature feature--reverse">
-                <div class="feature__inner">
+            </div>
+        </section>
 
-                    <!-- Chap: matn + tugmalar -->
-                    <div class="feature__content">
-                        <h2 class="feature__title">The O'zbek Taxi you know, reimagined for business</h2>
-                        <p class="feature__text">
-                            O'zbek Taxi for Business helps you get your employees where they need to go, with a
-                            centralized dashboard and consolidated billing.
-                        </p>
-                        <div class="feature__actions">
-                            <a href="#" class="btn btn--dark">Get started</a>
-                        </div>
-                    </div>
+        <!-- ===================== 8. DRIVE ===================== -->
+        <section class="feature">
+            <div class="feature__inner">
 
-                    <!-- O'ng: rasm -->
-                    <div class="feature__media">
-                        <img class="feature__img" src="images/business.svg" alt=""
-                            onerror="this.style.display='none'" />
-                    </div>
-
+                <!-- Chap: rasm -->
+                <div class="feature__media">
+                    <img class="feature__img" src="images/drive.svg" alt="" onerror="this.style.display='none'" />
                 </div>
-            </section>
 
+                <!-- O'ng: matn + tugmalar -->
+                <div class="feature__content">
+                    <h2 class="feature__title">Drive when you want, make what you need</h2>
+                    <p class="feature__text">
+                        Make money on your schedule with deliveries or rides—or both.
+                        You can use your own car or choose a rental through O'zbek Taxi.
+                    </p>
+                    <div class="feature__actions">
+                        <a href="#" class="btn btn--dark">Get started</a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ===================== 9. BUSINESS ===================== -->
+        <section class="feature feature--reverse">
+            <div class="feature__inner">
+
+                <!-- Chap: matn + tugmalar -->
+                <div class="feature__content">
+                    <h2 class="feature__title">The O'zbek Taxi you know, reimagined for business</h2>
+                    <p class="feature__text">
+                        O'zbek Taxi for Business helps you get your employees where they need to go, with a
+                        centralized dashboard and consolidated billing.
+                    </p>
+                    <div class="feature__actions">
+                        <a href="#" class="btn btn--dark">Get started</a>
+                    </div>
+                </div>
+
+                <!-- O'ng: rasm -->
+                <div class="feature__media">
+                    <img class="feature__img" src="images/business.svg" alt="" onerror="this.style.display='none'" />
+                </div>
+
+            </div>
         </section>
 
     </main>
-
-    </main>
-    <!-- (yuqoridagi </main> — Business seksiyadan keyin main yopiladi) -->
 
     <!-- ===================== 10. FOOTER ===================== -->
     <footer class="footer">
         <div class="footer__inner">
 
-            <!-- Yuqori qator: logo + ro'yxatdan o'tish ma'lumotlari -->
+            <!-- Yuqori qator: logo + ma'lumot -->
             <div class="footer__top">
                 <a href="#" class="footer__logo">O'zbek Taxi</a>
                 <div class="footer__reg">
@@ -249,7 +282,6 @@
                         passengers with transportation providers.</p>
                 </div>
             </div>
-
 
             <!-- Ustunlar -->
             <nav class="footer__cols" aria-label="Footer">
@@ -292,7 +324,7 @@
                     </ul>
                 </div>
             </nav>
-                
+
             <!-- Copyright -->
             <div class="footer__copyright">
                 <span>© 2026 O'zbek Taxi Technologies Inc.</span>
@@ -305,11 +337,8 @@
 
         </div>
     </footer>
-</body>
 
-</html>
-
-<script src="index.js"></script>
+    <script src="index.js"></script>
 </body>
 
 </html>
