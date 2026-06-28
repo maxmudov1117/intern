@@ -1,19 +1,49 @@
+/* ============================================================
+   O'zbek Taxi — Light / Tech redesign
+   Oq fon + teal/cyan akcent, glassmorphism, gradient glow va
+   silliq animatsiyalar. FAQAT dizayn — JS bog'liqliklari saqlangan.
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
 /* ============ ROOT / TOKENLAR ============ */
 :root {
-    --color-black: #000000;
+    /* Fon va sirtlar — OQ */
+    --color-page: #ffffff;
+    --color-surface-1: #ffffff;
+    --color-surface-2: #f4f7fb;
+    --color-glass: rgba(255, 255, 255, 0.66);
+    --color-glass-strong: rgba(255, 255, 255, 0.85);
+
+    /* Matn */
     --color-white: #ffffff;
+    --color-text: #0b1220;
+    --color-muted: #5a6578;
+
+    /* Chegaralar */
+    --color-border: rgba(15, 23, 42, 0.10);
+    --color-border-strong: rgba(15, 23, 42, 0.20);
+
+    /* Akcent — teal / cyan */
+    --color-teal: #0ea5a0;
+    --color-cyan: #0ea5e9;
+    --accent-grad: linear-gradient(135deg, #14b8a6 0%, #0ea5e9 100%);
+    --accent-grad-soft: linear-gradient(135deg, rgba(20, 184, 166, .12), rgba(14, 165, 233, .12));
+    --glow-teal: rgba(20, 184, 166, .35);
+    --glow-cyan: rgba(14, 165, 233, .28);
+
+    /* Eski tokenlar (mosligi uchun) */
+    --color-black: #0b1220;
     --color-bg: #ffffff;
-    --color-text: #000000;
-    --color-muted: #6b6b6b;
-    --color-gray-100: #f6f6f6;
-    --color-gray-200: #eeeeee;
-    --color-border: #e8e8e8;
+    --color-gray-100: #f4f7fb;
+    --color-gray-200: #eef2f8;
 
-    --header-height: 88px;
-    --container-pad: clamp(20px, 4vw, 40px);
+    --header-height: 84px;
+    --container-pad: clamp(20px, 4vw, 44px);
     --radius-pill: 999px;
+    --shadow-card: 0 24px 60px -26px rgba(13, 30, 70, .28);
 
-    --font-sans: "Uber Move", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --font-sans: "Inter", "Uber Move", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 /* ============ RESET ============ */
@@ -27,14 +57,58 @@
 
 html {
     -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
 }
 
 body {
+    position: relative;
     font-family: var(--font-sans);
     color: var(--color-text);
-    background: var(--color-bg);
+    background: var(--color-page);
     line-height: 1.5;
+    overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
+}
+
+/* Oq fon ustida nozik rangli glow'lar */
+body::before {
+    content: "";
+    position: fixed;
+    inset: -20% -10% auto -10%;
+    height: 80vh;
+    z-index: -2;
+    background:
+        radial-gradient(40% 50% at 18% 10%, rgba(20, 184, 166, .12), transparent 60%),
+        radial-gradient(45% 55% at 85% 6%, rgba(14, 165, 233, .12), transparent 60%),
+        radial-gradient(35% 45% at 60% 38%, rgba(99, 102, 241, .07), transparent 60%);
+    filter: blur(8px);
+    animation: glow-drift 18s ease-in-out infinite alternate;
+}
+
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background-image:
+        linear-gradient(rgba(13, 30, 70, .035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(13, 30, 70, .035) 1px, transparent 1px);
+    background-size: 64px 64px;
+    -webkit-mask-image: radial-gradient(circle at 50% 0%, #000 0%, transparent 70%);
+    mask-image: radial-gradient(circle at 50% 0%, #000 0%, transparent 70%);
+}
+
+@keyframes glow-drift {
+    0% {
+        transform: translate3d(0, 0, 0) scale(1);
+        opacity: .85;
+    }
+
+    100% {
+        transform: translate3d(0, 24px, 0) scale(1.08);
+        opacity: 1;
+    }
 }
 
 a {
@@ -60,26 +134,55 @@ svg {
     max-width: 100%;
 }
 
+::selection {
+    background: rgba(20, 184, 166, .22);
+    color: var(--color-text);
+}
+
+/* Maxsus scrollbar */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(13, 30, 70, .2) transparent;
+}
+
+*::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+*::-webkit-scrollbar-thumb {
+    background: rgba(13, 30, 70, .16);
+    border-radius: 999px;
+    border: 2px solid transparent;
+    background-clip: padding-box;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+    background: rgba(20, 184, 166, .5);
+    background-clip: padding-box;
+}
+
 /* ============ TUGMA ============ */
 .btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     font-size: 1rem;
-    font-weight: 500;
+    font-weight: 600;
     border-radius: var(--radius-pill);
     padding: 10px 18px;
     white-space: nowrap;
-    transition: background-color .15s ease, color .15s ease;
+    transition: transform .2s ease, box-shadow .25s ease, background-color .2s ease, filter .2s ease;
 }
 
 .btn--light {
     background: var(--color-white);
-    color: var(--color-black);
+    color: var(--color-text);
+    border: 1px solid var(--color-border);
 }
 
 .btn--light:hover {
-    background: #e8e8e8;
+    background: #f0f3f8;
 }
 
 /* ============ 1. HEADER ============ */
@@ -87,8 +190,12 @@ svg {
     position: sticky;
     top: 0;
     z-index: 100;
-    background: var(--color-black);
-    color: var(--color-white);
+    background: rgba(255, 255, 255, 0.72);
+    color: var(--color-text);
+    border-bottom: 1px solid var(--color-border);
+    -webkit-backdrop-filter: saturate(160%) blur(16px);
+    backdrop-filter: saturate(160%) blur(16px);
+    animation: drop-in .6s ease both;
 }
 
 .header__inner {
@@ -99,7 +206,6 @@ svg {
     padding: 0 var(--container-pad);
 }
 
-/* Chap blok */
 .header__left {
     display: flex;
     align-items: center;
@@ -107,10 +213,14 @@ svg {
 }
 
 .header__logo {
-    font-size: 1.6rem;
-    font-weight: 500;
+    font-size: 1.55rem;
+    font-weight: 800;
     letter-spacing: -0.02em;
-    color: var(--color-white);
+    background: var(--accent-grad);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
 }
 
 /* Navigatsiya */
@@ -121,19 +231,39 @@ svg {
 }
 
 .nav__link {
+    position: relative;
     display: inline-flex;
     align-items: center;
     gap: 4px;
-    color: var(--color-white);
+    color: var(--color-muted);
     font-size: 1rem;
     font-weight: 500;
     padding: 8px 12px;
-    border-radius: 8px;
-    transition: background-color .15s ease;
+    border-radius: 10px;
+    transition: color .2s ease, background-color .2s ease;
+}
+
+.nav__link::after {
+    content: "";
+    position: absolute;
+    left: 12px;
+    right: 12px;
+    bottom: 4px;
+    height: 2px;
+    border-radius: 2px;
+    background: var(--accent-grad);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform .25s ease;
 }
 
 .nav__link:hover {
-    background: rgba(255, 255, 255, 0.10);
+    color: var(--color-text);
+    background: rgba(13, 30, 70, 0.04);
+}
+
+.nav__link:hover::after {
+    transform: scaleX(1);
 }
 
 .nav__chevron {
@@ -153,17 +283,18 @@ svg {
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    color: var(--color-white);
+    color: var(--color-muted);
     font-size: 1rem;
     font-weight: 500;
     padding: 8px 12px;
-    border-radius: 8px;
-    transition: background-color .15s ease;
+    border-radius: 10px;
+    transition: color .2s ease, background-color .2s ease;
 }
 
 .header__lang:hover,
 .header__link:hover {
-    background: rgba(255, 255, 255, 0.10);
+    color: var(--color-text);
+    background: rgba(13, 30, 70, 0.04);
 }
 
 .header__globe {
@@ -177,45 +308,94 @@ svg {
 
 
 /* ============ 2. HERO ============ */
+.hero {
+    position: relative;
+}
+
 .hero__inner {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: clamp(32px, 5vw, 72px);
     align-items: center;
-    padding: clamp(28px, 4vw, 48px) var(--container-pad) clamp(40px, 6vw, 72px);
+    max-width: 1320px;
+    margin: 0 auto;
+    padding: clamp(36px, 5vw, 72px) var(--container-pad) clamp(48px, 7vw, 96px);
 }
 
 .hero__content {
-    max-width: 560px;
+    max-width: 580px;
+    animation: rise-in .8s cubic-bezier(.22, 1, .36, 1) both;
 }
 
 /* Location */
 .hero__location {
-    display: flex;
+    display: inline-flex;
     align-items: center;
     gap: 8px;
-    font-size: 1rem;
+    font-size: .95rem;
     font-weight: 500;
+    color: var(--color-muted);
+    padding: 7px 14px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-pill);
+    background: var(--color-glass);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
 }
 
 .hero__pin {
-    width: 18px;
-    height: 18px;
+    width: 16px;
+    height: 16px;
     flex: none;
+    color: var(--color-teal);
 }
 
 .hero__change {
-    text-decoration: underline;
-    text-underline-offset: 2px;
+    color: var(--color-cyan);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(14, 165, 233, .4);
+    transition: border-color .2s ease;
+}
+
+.hero__change:hover {
+    border-color: var(--color-cyan);
 }
 
 /* Title */
 .hero__title {
-    font-size: clamp(2.75rem, 5vw, 3.5rem);
-    font-weight: 700;
-    line-height: 1.08;
-    letter-spacing: -0.02em;
-    margin: 14px 0 26px;
+    font-size: clamp(2.6rem, 5.4vw, 3.75rem);
+    font-weight: 800;
+    line-height: 1.06;
+    letter-spacing: -0.03em;
+    margin: 18px 0 28px;
+    background: linear-gradient(180deg, #0b1220 30%, #2b3a55 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+}
+
+/* Forma — glass karta */
+.hero__form {
+    position: relative;
+    padding: 22px;
+    border-radius: 22px;
+    background: var(--color-glass-strong);
+    border: 1px solid var(--color-border);
+    box-shadow: var(--shadow-card);
+    -webkit-backdrop-filter: blur(18px);
+    backdrop-filter: blur(18px);
+    overflow: hidden;
+}
+
+.hero__form::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 10%;
+    right: 10%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--color-teal), var(--color-cyan), transparent);
 }
 
 /* Pickup now */
@@ -223,37 +403,43 @@ svg {
     display: inline-flex;
     align-items: center;
     gap: 10px;
-    background: var(--color-gray-100);
+    background: var(--color-surface-2);
+    border: 1px solid var(--color-border);
+    color: var(--color-text);
     border-radius: var(--radius-pill);
-    padding: 13px 18px;
-    font-size: 1rem;
+    padding: 11px 18px;
+    font-size: .95rem;
     font-weight: 500;
     margin-bottom: 16px;
+    transition: border-color .2s ease, background-color .2s ease, transform .2s ease;
 }
 
 .hero__when:hover {
-    background: #ececec;
+    background: #eaf0f7;
+    border-color: var(--color-border-strong);
+    transform: translateY(-1px);
 }
 
 .hero__when-clock {
     width: 18px;
     height: 18px;
+    color: var(--color-teal);
 }
 
 .hero__when-chevron {
     width: 16px;
     height: 16px;
+    color: var(--color-muted);
 }
 
 /* ============ FORMA MAYDONLARI ============ */
 .hero__fields {
     position: relative;
-    margin-bottom: 24px;
+    margin-bottom: 20px;
 }
 
-/* Manzil guruhi (Qayerdan / Qayerga) */
 .loc-group + .loc-group {
-    margin-top: 14px;
+    margin-top: 12px;
 }
 
 .loc-label {
@@ -268,21 +454,20 @@ svg {
 .loc-row {
     display: grid;
     grid-template-columns: 1.1fr 1fr;
-    gap: 6px;
+    gap: 8px;
     align-items: start;
 }
 
-/* Grid ichida ikkinchi field (Tuman) ortiqcha margin olmasin */
 .loc-row .field + .field {
     margin-top: 0;
 }
 
-/* Tuman maydoni — markersiz, oddiy chap padding */
+/* Tuman maydoni — markersiz */
 .field--plain {
     padding-left: 18px;
 }
 
-/* O'chirilgan (viloyat tanlanmagan) holat */
+/* O'chirilgan holat */
 .field.is-disabled {
     opacity: .5;
 }
@@ -291,9 +476,9 @@ svg {
     cursor: not-allowed;
 }
 
-/* Telefon maydonini guruhdan ajratish */
+/* Telefon maydonini ajratish */
 .hero__fields > .field:last-child {
-    margin-top: 14px;
+    margin-top: 12px;
 }
 
 /* Field (umumiy) */
@@ -301,18 +486,28 @@ svg {
     position: relative;
     display: flex;
     align-items: center;
-    height: 64px;
-    background: var(--color-gray-200);
-    border-radius: 8px;
+    height: 60px;
+    background: var(--color-surface-2);
+    border: 1px solid var(--color-border);
+    border-radius: 14px;
     padding: 0 14px 0 44px;
+    transition: border-color .2s ease, background-color .2s ease, box-shadow .2s ease;
+}
+
+.field:hover {
+    border-color: var(--color-border-strong);
+    background: #eef2f8;
 }
 
 .field + .field {
-    margin-top: 6px;
+    margin-top: 8px;
 }
 
-.field:focus-within {
-    box-shadow: inset 0 0 0 2px var(--color-black);
+.field:focus-within,
+.field--dropdown.is-open {
+    border-color: rgba(20, 184, 166, .7);
+    box-shadow: 0 0 0 3px rgba(20, 184, 166, .15);
+    background: #ffffff;
 }
 
 .field__icon {
@@ -327,20 +522,36 @@ svg {
 
 .marker {
     display: block;
-    background: var(--color-black);
+    background: var(--color-teal);
 }
 
 .marker--pickup {
     width: 8px;
     height: 8px;
     border-radius: 50%;
-    box-shadow: 0 0 0 2px var(--color-gray-200), 0 0 0 3.5px var(--color-black);
+    background: var(--color-teal);
+    box-shadow: 0 0 0 3px rgba(20, 184, 166, .22);
+    animation: marker-pulse 2.4s ease-in-out infinite;
 }
 
 .marker--dropoff {
     width: 9px;
     height: 9px;
     border-radius: 2px;
+    background: var(--color-cyan);
+    box-shadow: 0 0 0 3px rgba(14, 165, 233, .2);
+}
+
+@keyframes marker-pulse {
+
+    0%,
+    100% {
+        box-shadow: 0 0 0 3px rgba(20, 184, 166, .22);
+    }
+
+    50% {
+        box-shadow: 0 0 0 6px rgba(20, 184, 166, .05);
+    }
 }
 
 .field__input {
@@ -364,7 +575,7 @@ svg {
     justify-content: center;
     width: 28px;
     height: 28px;
-    color: var(--color-black);
+    color: var(--color-teal);
 }
 
 .field__action svg {
@@ -372,7 +583,7 @@ svg {
     height: 22px;
 }
 
-/* Dropdown control (viloyat/tuman tugmasi) */
+/* Dropdown control */
 .field__control {
     flex: 1;
     min-width: 0;
@@ -403,11 +614,13 @@ svg {
     width: 18px;
     height: 18px;
     flex: none;
-    transition: transform .2s ease;
+    color: var(--color-muted);
+    transition: transform .25s ease, color .2s ease;
 }
 
 .field--dropdown.is-open .field__chevron {
     transform: rotate(180deg);
+    color: var(--color-teal);
 }
 
 /* Dropdown roʻyxati */
@@ -415,12 +628,15 @@ svg {
     position: absolute;
     left: 0;
     right: 0;
-    top: calc(100% + 6px);
+    top: calc(100% + 8px);
     z-index: 50;
     display: none;
-    background: var(--color-white);
-    border-radius: 12px;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, .16), 0 0 0 1px rgba(0, 0, 0, .05);
+    background: rgba(255, 255, 255, 0.98);
+    border: 1px solid var(--color-border-strong);
+    border-radius: 16px;
+    box-shadow: 0 20px 50px -16px rgba(13, 30, 70, .28);
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
     padding: 8px;
     max-height: 320px;
     overflow-y: auto;
@@ -428,18 +644,34 @@ svg {
 
 .field--dropdown.is-open .dropdown {
     display: block;
+    animation: dropdown-in .22s cubic-bezier(.22, 1, .36, 1) both;
+}
+
+@keyframes dropdown-in {
+    from {
+        opacity: 0;
+        transform: translateY(-8px) scale(.98);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
 }
 
 .dropdown__option {
     list-style: none;
     padding: 12px 14px;
-    border-radius: 8px;
+    border-radius: 10px;
     font-size: 1.0625rem;
+    color: var(--color-text);
     cursor: pointer;
+    transition: background-color .15s ease, color .15s ease;
 }
 
 .dropdown__option:hover {
-    background: var(--color-gray-100);
+    background: var(--accent-grad-soft);
+    color: var(--color-teal);
 }
 
 /* Mobil: viloyat va tuman ustma-ust */
@@ -452,69 +684,117 @@ svg {
 /* Actions */
 .hero__actions {
     display: flex;
-    align-items: center;
-    gap: 26px;
-    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
 }
 
 .btn--dark {
-    background: var(--color-black);
-    color: var(--color-white);
-    border-radius: 8px;
-    padding: 14px 22px;
+    position: relative;
+    background: var(--accent-grad);
+    color: #ffffff;
+    border-radius: 14px;
+    padding: 15px 22px;
     font-size: 1.0625rem;
+    font-weight: 700;
     width: 100%;
+    box-shadow: 0 14px 30px -10px var(--glow-teal);
+    overflow: hidden;
+}
+
+/* Shimmer */
+.btn--dark::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(120deg, transparent 30%, rgba(255, 255, 255, .5) 50%, transparent 70%);
+    transform: translateX(-120%);
+    transition: transform .6s ease;
 }
 
 .btn--dark:hover {
-    background: #2b2b2b;
+    transform: translateY(-2px);
+    box-shadow: 0 20px 40px -10px var(--glow-teal);
+    filter: brightness(1.04);
+}
+
+.btn--dark:hover::after {
+    transform: translateX(120%);
+}
+
+.btn--dark:active {
+    transform: translateY(0);
 }
 
 .btn--dark:disabled {
-    opacity: .55;
+    opacity: .6;
     cursor: default;
+    transform: none;
+    box-shadow: none;
+}
+
+.btn--dark:disabled::after {
+    display: none;
 }
 
 .hero__recent {
     font-size: 1.0625rem;
     font-weight: 500;
-    text-decoration: underline;
-    text-underline-offset: 3px;
+    color: var(--color-cyan);
 }
 
 /* Status xabari */
 .hero__status {
     font-size: .95rem;
-    font-weight: 500;
+    font-weight: 600;
     min-height: 1.2em;
-    margin-top: 4px;
+    margin-top: 2px;
+    text-align: center;
+    transition: color .2s ease;
 }
 
 .hero__status--error {
-    color: #c0392b;
+    color: #dc2626;
 }
 
 .hero__status--success {
-    color: #1a7f37;
+    color: #0f9d8f;
 }
 
 .hero__status--loading {
     color: var(--color-muted);
 }
 
-/* Media + overlay */
+/* Media + glow */
 .hero__media {
     position: relative;
     justify-self: end;
     width: 100%;
     max-width: 540px;
     aspect-ratio: 1 / 1;
-    border-radius: 10px;
+    border-radius: 24px;
     overflow: hidden;
-    background: linear-gradient(140deg, #f4b03f 0%, #d9663a 55%, #7a2f24 100%);
+    border: 1px solid var(--color-border);
+    background:
+        radial-gradient(120% 120% at 0% 0%, rgba(20, 184, 166, .85), transparent 55%),
+        radial-gradient(120% 120% at 100% 100%, rgba(14, 165, 233, .85), transparent 55%),
+        linear-gradient(150deg, #e9fbf7 0%, #e7f3fe 100%);
+    box-shadow: var(--shadow-card);
+    animation: rise-in 1s cubic-bezier(.22, 1, .36, 1) both;
+    animation-delay: .1s;
+}
+
+.hero__media::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(60% 60% at 50% 30%, rgba(255, 255, 255, .45), transparent 70%);
+    mix-blend-mode: screen;
+    animation: glow-drift 9s ease-in-out infinite alternate;
 }
 
 .hero__img {
+    position: relative;
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -530,14 +810,15 @@ svg {
     justify-content: space-between;
     gap: 16px;
     padding: 14px 14px 14px 20px;
-    border-radius: 12px;
-    background: rgba(74, 52, 40, 0.5);
-    -webkit-backdrop-filter: blur(10px);
-    backdrop-filter: blur(10px);
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.65);
+    border: 1px solid var(--color-border);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
 }
 
 .hero__overlay-text {
-    color: var(--color-white);
+    color: var(--color-text);
     font-size: 1.0625rem;
     font-weight: 500;
 }
@@ -546,7 +827,6 @@ svg {
     padding: 11px 18px;
 }
 
-/* Vaqtinchalik mobil — to'liq responsive 12-qadamda */
 @media (max-width: 900px) {
     .hero__inner {
         grid-template-columns: 1fr;
@@ -555,6 +835,7 @@ svg {
     .hero__media {
         justify-self: stretch;
         max-width: 100%;
+        order: -1;
     }
 }
 
@@ -564,7 +845,9 @@ svg {
     grid-template-columns: 1fr 1.1fr;
     gap: clamp(32px, 5vw, 80px);
     align-items: center;
-    padding: clamp(40px, 6vw, 80px) var(--container-pad);
+    max-width: 1320px;
+    margin: 0 auto;
+    padding: clamp(48px, 7vw, 96px) var(--container-pad);
 }
 
 .getaway__content {
@@ -572,56 +855,72 @@ svg {
 }
 
 .getaway__title {
-    font-size: clamp(2.25rem, 4vw, 3rem);
-    font-weight: 700;
+    font-size: clamp(2.1rem, 4vw, 3rem);
+    font-weight: 800;
     line-height: 1.1;
     letter-spacing: -0.02em;
     margin-bottom: 20px;
+    background: linear-gradient(180deg, #0b1220 35%, #2b3a55 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
 }
 
 .getaway__text {
     font-size: clamp(1rem, 1.1vw, 1.125rem);
-    line-height: 1.5;
-    color: var(--color-text);
+    line-height: 1.6;
+    color: var(--color-muted);
     max-width: 460px;
     margin-bottom: 32px;
 }
 
-/* Qora city tugmasi (pin + chevron) */
+/* City tugmasi */
 .getaway__city {
     display: inline-flex;
     align-items: center;
     justify-content: space-between;
     gap: 24px;
     min-width: 116px;
-    background: var(--color-black);
-    color: var(--color-white);
+    background: var(--color-surface-1);
+    border: 1px solid var(--color-border-strong);
+    color: var(--color-text);
     border-radius: var(--radius-pill);
     padding: 14px 20px;
-    transition: background-color .15s ease;
+    transition: border-color .2s ease, background-color .2s ease, transform .2s ease, box-shadow .2s ease;
 }
 
 .getaway__city:hover {
-    background: #2b2b2b;
+    border-color: rgba(20, 184, 166, .6);
+    background: var(--accent-grad-soft);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 28px -12px var(--glow-teal);
 }
 
 .getaway__pin {
     width: 20px;
     height: 20px;
+    color: var(--color-teal);
 }
 
 .getaway__chevron {
     width: 16px;
     height: 16px;
+    color: var(--color-muted);
 }
 
 /* Gorizontal rasm */
 .getaway__media {
+    position: relative;
     width: 100%;
     aspect-ratio: 4 / 3;
-    border-radius: 10px;
+    border-radius: 22px;
     overflow: hidden;
-    background: #eef1f4;
+    border: 1px solid var(--color-border);
+    background:
+        radial-gradient(100% 100% at 100% 0%, rgba(14, 165, 233, .8), transparent 55%),
+        linear-gradient(150deg, #e7f3fe 0%, #eef6ff 100%);
+    box-shadow: var(--shadow-card);
 }
 
 .getaway__img {
@@ -631,7 +930,6 @@ svg {
     display: block;
 }
 
-/* Vaqtinchalik mobil */
 @media (max-width: 900px) {
     .getaway__inner {
         grid-template-columns: 1fr;
@@ -644,16 +942,23 @@ svg {
     grid-template-columns: 1fr 1fr;
     gap: clamp(40px, 6vw, 96px);
     align-items: center;
-    padding: clamp(40px, 6vw, 80px) var(--container-pad);
+    max-width: 1320px;
+    margin: 0 auto;
+    padding: clamp(40px, 6vw, 88px) var(--container-pad);
 }
 
 /* Kvadrat rasm */
 .feature__media {
+    position: relative;
     width: 100%;
     aspect-ratio: 1 / 1;
-    border-radius: 12px;
+    border-radius: 22px;
     overflow: hidden;
-    background: #2a2336;
+    border: 1px solid var(--color-border);
+    background:
+        radial-gradient(110% 110% at 0% 100%, rgba(20, 184, 166, .8), transparent 55%),
+        linear-gradient(150deg, #e9fbf7 0%, #eef6ff 100%);
+    box-shadow: var(--shadow-card);
 }
 
 .feature__img {
@@ -669,22 +974,26 @@ svg {
 }
 
 .feature__title {
-    font-size: clamp(2.25rem, 4vw, 3rem);
-    font-weight: 700;
+    font-size: clamp(2.1rem, 4vw, 3rem);
+    font-weight: 800;
     line-height: 1.1;
     letter-spacing: -0.02em;
     margin-bottom: 22px;
+    background: linear-gradient(180deg, #0b1220 35%, #2b3a55 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
 }
 
 .feature__text {
     font-size: clamp(1rem, 1.1vw, 1.125rem);
-    line-height: 1.5;
-    color: var(--color-text);
+    line-height: 1.6;
+    color: var(--color-muted);
     max-width: 480px;
     margin-bottom: 34px;
 }
 
-/* Tugmalar qatori */
 .feature__actions {
     display: flex;
     align-items: center;
@@ -692,31 +1001,35 @@ svg {
     flex-wrap: wrap;
 }
 
+.feature__actions .btn--dark {
+    width: auto;
+    padding: 14px 28px;
+}
+
 .feature__link {
     font-size: 1.0625rem;
     font-weight: 500;
-    text-decoration: underline;
-    text-underline-offset: 3px;
+    color: var(--color-cyan);
 }
 
-/* Vaqtinchalik mobil */
 @media (max-width: 900px) {
     .feature__inner {
         grid-template-columns: 1fr;
     }
 }
 
-/* Business — rasm o'ngda, matn chapda */
+/* Business — rasm o'ngda */
 .feature--reverse .feature__media {
     order: 2;
-    background: #cfe0ef;
+    background:
+        radial-gradient(110% 110% at 100% 0%, rgba(14, 165, 233, .8), transparent 55%),
+        linear-gradient(150deg, #e7f3fe 0%, #eef6ff 100%);
 }
 
 .feature--reverse .feature__content {
     order: 1;
 }
 
-/* Mobil: rasm yana tepaga chiqsin (matndan oldin) */
 @media (max-width: 900px) {
     .feature--reverse .feature__media {
         order: 1;
@@ -727,19 +1040,20 @@ svg {
     }
 }
 
-/* ============ 10. FOOTER ============ */
+/* ============ 10. FOOTER (kontrast uchun to'q navy) ============ */
 .footer {
-    background: var(--color-black);
+    position: relative;
+    background: linear-gradient(180deg, #0b1422 0%, #070b16 100%);
     color: var(--color-white);
+    border-top: 1px solid rgba(255, 255, 255, .08);
 }
 
 .footer__inner {
     max-width: 1320px;
     margin: 0 auto;
-    padding: clamp(48px, 6vw, 72px) var(--container-pad) 40px;
+    padding: clamp(48px, 6vw, 80px) var(--container-pad) 40px;
 }
 
-/* Yuqori qator */
 .footer__top {
     display: flex;
     justify-content: space-between;
@@ -749,17 +1063,22 @@ svg {
 }
 
 .footer__logo {
-    font-size: 2rem;
-    font-weight: 500;
+    font-size: 1.9rem;
+    font-weight: 800;
     letter-spacing: -0.02em;
-    color: var(--color-white);
+    background: var(--accent-grad);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
 }
 
 .footer__reg {
     text-align: right;
     font-size: 0.95rem;
-    color: #c9c9c9;
+    color: rgba(255, 255, 255, .6);
     line-height: 1.6;
+    max-width: 460px;
 }
 
 .footer__help {
@@ -767,15 +1086,12 @@ svg {
     margin: 28px 0 56px;
     font-size: 1.0625rem;
     color: var(--color-white);
-    text-decoration: none;
 }
 
 .footer__help:hover {
-    text-decoration: underline;
-    text-underline-offset: 3px;
+    color: var(--color-teal);
 }
 
-/* Ustunlar */
 .footer__cols {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -783,27 +1099,27 @@ svg {
 }
 
 .footer__title {
-    font-size: 1.25rem;
+    font-size: 1.05rem;
     font-weight: 700;
-    margin-bottom: 28px;
+    margin-bottom: 24px;
+    color: #fff;
 }
 
 .footer__list {
     display: flex;
     flex-direction: column;
-    gap: 22px;
+    gap: 18px;
 }
 
 .footer__link {
-    font-size: 1.0625rem;
-    color: #e6e6e6;
-    text-decoration: none;
+    font-size: 1rem;
+    color: rgba(255, 255, 255, .62);
+    transition: color .2s ease, padding-left .2s ease;
 }
 
 .footer__link:hover {
-    color: #fff;
-    text-decoration: underline;
-    text-underline-offset: 3px;
+    color: var(--color-teal);
+    padding-left: 4px;
 }
 
 /* Ijtimoiy + ilovalar */
@@ -828,12 +1144,15 @@ svg {
     width: 40px;
     height: 40px;
     border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, .12);
     color: var(--color-white);
-    transition: background-color .15s ease;
+    transition: background-color .2s ease, border-color .2s ease, transform .2s ease;
 }
 
 .footer__icon:hover {
-    background: rgba(255, 255, 255, 0.12);
+    background: var(--accent-grad-soft);
+    border-color: rgba(20, 184, 166, .5);
+    transform: translateY(-2px);
 }
 
 .footer__icon svg {
@@ -854,7 +1173,6 @@ svg {
     gap: 8px;
     font-size: 1.0625rem;
     color: var(--color-white);
-    text-decoration: none;
 }
 
 .footer__lang svg {
@@ -863,8 +1181,7 @@ svg {
 }
 
 .footer__lang:hover {
-    text-decoration: underline;
-    text-underline-offset: 3px;
+    color: var(--color-teal);
 }
 
 .footer__badge {
@@ -873,16 +1190,15 @@ svg {
     gap: 10px;
     height: 48px;
     padding: 0 16px;
-    border: 1px solid #5a5a5a;
-    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, .18);
+    border-radius: 12px;
     color: var(--color-white);
-    text-decoration: none;
-    transition: border-color .15s ease, background-color .15s ease;
+    transition: border-color .2s ease, background-color .2s ease;
 }
 
 .footer__badge:hover {
-    border-color: #fff;
-    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(20, 184, 166, .5);
+    background: rgba(255, 255, 255, .05);
 }
 
 .footer__badge svg {
@@ -899,7 +1215,7 @@ svg {
 
 .footer__badge-text small {
     font-size: 0.7rem;
-    color: #c9c9c9;
+    color: rgba(255, 255, 255, .6);
 }
 
 .footer__badge-text strong {
@@ -916,9 +1232,9 @@ svg {
     flex-wrap: wrap;
     margin-top: 40px;
     padding-top: 28px;
-    border-top: 1px solid #2a2a2a;
+    border-top: 1px solid rgba(255, 255, 255, .08);
     font-size: 0.95rem;
-    color: #c9c9c9;
+    color: rgba(255, 255, 255, .6);
 }
 
 .footer__meta {
@@ -927,17 +1243,15 @@ svg {
 }
 
 .footer__meta-link {
-    color: #e6e6e6;
-    text-decoration: none;
+    color: rgba(255, 255, 255, .62);
+    transition: color .2s ease;
 }
 
 .footer__meta-link:hover {
-    color: #fff;
-    text-decoration: underline;
-    text-underline-offset: 3px;
+    color: var(--color-teal);
 }
 
-/* Responsive */
+/* Footer responsive */
 @media (max-width: 900px) {
     .footer__cols {
         grid-template-columns: repeat(2, 1fr);
@@ -956,5 +1270,72 @@ svg {
 @media (max-width: 520px) {
     .footer__cols {
         grid-template-columns: 1fr;
+    }
+}
+
+/* ============================================================
+   ANIMATSIYALAR — kirish va scroll-reveal (faqat CSS, JS'siz)
+   ============================================================ */
+@keyframes rise-in {
+    from {
+        opacity: 0;
+        transform: translateY(28px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes drop-in {
+    from {
+        opacity: 0;
+        transform: translateY(-100%);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Scroll bilan ochiluvchi animatsiya — qo'llab-quvvatlovchi brauzerlarda.
+   Boshqalarida elementlar oddiy ko'rinadi. */
+@supports (animation-timeline: view()) {
+    @media (prefers-reduced-motion: no-preference) {
+
+        .getaway__content,
+        .getaway__media,
+        .feature__content,
+        .feature__media {
+            animation: reveal-up linear both;
+            animation-timeline: view();
+            animation-range: entry 5% cover 28%;
+        }
+    }
+}
+
+@keyframes reveal-up {
+    from {
+        opacity: 0;
+        transform: translateY(40px) scale(.98);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Harakatni kamaytirish so'ralsa — animatsiyalarni o'chiramiz */
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
     }
 }

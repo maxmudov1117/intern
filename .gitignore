@@ -62,3 +62,7 @@ staticfiles/
 *.njsproj
 *.sln
 *.sw?
+
+# Claude Code (lokal sozlamalar va sessiyalar)
+.claude/
+index.css.bak
